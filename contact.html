@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuickBite | Contact Us</title>
+  <link rel="stylesheet" href="./contact.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+
+  <div class="bg-overlay"></div>
+  <div class="floating-shape shape1"></div>
+  <div class="floating-shape shape2"></div>
+  <div class="floating-shape shape3"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar glass-nav glow-border">
+    <div class="logo">Quick <span>Bite</span></div>
+
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="offers.html">Offers</a></li>
+      <li><a href="Signin.html">Sign In</a></li>
+      <li><a href="#" class="active">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <section class="contact-page">
+    <div class="contact-header glass-card">
+      <p class="small-tag">QUICKBITE SUPPORT</p>
+      <h1>Get in Touch with <span>QuickBite</span></h1>
+      <p class="subtitle">
+        Have questions about orders, delivery, restaurants, or offers?
+        Our team is here to help you anytime.
+      </p>
+    </div>
+
+    <div class="contact-container">
+      <!-- LEFT SIDE -->
+      <div class="contact-left glass-card glow-border">
+        <h2>Send us a message</h2>
+        <p class="form-text">
+          Fill in your details and our QuickBite support team will contact you shortly.
+        </p>
+
+        <form id="contactForm" novalidate>
+          <div class="input-group">
+            <input type="text" id="name" placeholder="Your full name" />
+            <i class="fa-solid fa-user"></i>
+            <small class="error-message" id="nameError"></small>
+          </div>
+
+          <div class="input-group">
+            <input type="email" id="email" placeholder="Your email address" />
+            <i class="fa-solid fa-envelope"></i>
+            <small class="error-message" id="emailError"></small>
+          </div>
+
+          <div class="input-group">
+            <input type="tel" id="phone" placeholder="Your phone number" />
+            <i class="fa-solid fa-phone"></i>
+            <small class="error-message" id="phoneError"></small>
+          </div>
+
+          <div class="input-group">
+            <textarea id="message" rows="5" placeholder="Write your message..."></textarea>
+            <i class="fa-solid fa-comment-dots textarea-icon"></i>
+            <small class="error-message" id="messageError"></small>
+          </div>
+
+          <div class="message-counter" id="messageCounter">
+            <span id="typedCount">0</span> / <span id="maxCount">200</span> characters |
+            <span id="remainingCount">200</span> left
+          </div>
+
+          <button type="submit" class="send-btn" id="submitBtn" disabled>
+            <span>Submit</span>
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </form>
+
+        <p id="successMessage" class="success-message"></p>
+
+        <div class="social-card">
+          <h3>Connect with QuickBite</h3>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-x-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div class="contact-right">
+        <div class="info-cards">
+          <div class="info-card glass-card glow-border">
+            <div class="icon-box"><i class="fa-solid fa-location-dot"></i></div>
+            <div>
+              <h3>Our Location</h3>
+              <p>QuickBite HQ, Chennai, Tamil Nadu, India</p>
+            </div>
+          </div>
+
+          <div class="info-card glass-card glow-border">
+            <div class="icon-box"><i class="fa-solid fa-phone-volume"></i></div>
+            <div>
+              <h3>Call Us</h3>
+              <p>+91 98765 43210</p>
+            </div>
+          </div>
+
+          <div class="info-card glass-card glow-border">
+            <div class="icon-box"><i class="fa-solid fa-envelope-circle-check"></i></div>
+            <div>
+              <h3>Email Support</h3>
+              <p>support@quickbite.com</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-card glass-card glow-border">
+          <div class="map-header">
+            <h2>Find Us on Map</h2>
+            <p>Visit our office or connect with nearby support assistance.</p>
+          </div>
+
+          <div class="map-frame">
+            <iframe src="https://www.google.com/maps?q=Chennai&output=embed" loading="lazy" allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer glass-card">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h2>Quick<span>Bite</span></h2>
+          <p>
+            Delivering your favorite food with speed, style, and premium service.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <a href="index.html">Home</a>
+          <a href="menu.html">Menu</a>
+          <a href="offers.html">Offers</a>
+          <a href="#">Contact</a>
+        </div>
+
+        <div class="footer-contact">
+          <h3>Contact</h3>
+          <p>Chennai, Tamil Nadu</p>
+          <p>+91 98765 43210</p>
+          <p>support@quickbite.com</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 QuickBite. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- POPUP -->
+  <div class="popup-overlay" id="popupOverlay">
+    <div class="popup-box">
+      <i class="fa-solid fa-circle-check"></i>
+      <h3>Submitted Successfully</h3>
+      <p>Your message has been sent to QuickBite support.</p>
+      <button id="closePopup">OK</button>
+    </div>
+  </div>
+
+  <script src="./contact.js"></script>
+</body>
+
+</html>
