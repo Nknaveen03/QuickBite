@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickBits - Sign In</title>
+    <link rel="stylesheet" href="sign.css">
+</head>
+<body>
+    <div class="glass-container">
+        <h1 class="title">QuickBits</h1>
+        <h2 class="subtitle">Sign In</h2>
+        <h5 class="sub">Welcome back!</h5>
+        <form id="signinForm" novalidate>
+            <div class="form-group">
+                <label for="email" class="label">Email <span class="text-red-500">*</span></label>
+                <input type="email" id="email" placeholder="Enter your email address" class="input" required>
+                <span id="emailError" class="error hidden">Please enter a valid email.</span>
+            </div>
+            <div class="form-group">
+                <label for="password" class="label">Password <span class="text-red-500">*</span></label>
+                <input type="password" id="password" placeholder="Enter your password" class="input" required>
+                <span id="passwordError" class="error hidden">Password is required.</span>
+            </div>
+            <button type="submit" class="btn">Sign In</button>
+        </form>
+        <p class="mt-4 text-center">Don't have an account? <a href="signup.html" class="link">Sign Up</a></p>
+    </div>
+    <script src="sign.js"></script>
+</body>
+</html>
