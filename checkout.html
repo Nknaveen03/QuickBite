@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuickBite | Checkout</title>
+  <link rel="stylesheet" href="./checkout.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+</head>
+<body>
+  <div class="bg-overlay"></div>
+  <div class="floating-shape shape1"></div>
+  <div class="floating-shape shape2"></div>
+  <div class="floating-shape shape3"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar glass-nav glow-border">
+    <div class="logo">Quick <span>Bite</span></div>
+
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="offer.html">Offers</a></li>
+      <li><a href="signin.html">Sign In</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- CHECKOUT SECTION -->
+  <section class="checkout-section">
+    <div class="checkout-container">
+      <!-- FORM SECTION -->
+      <div class="checkout-form-wrapper">
+        <h1 class="page-title">Checkout 💳</h1>
+
+        <form id="checkoutForm" class="checkout-form">
+          <!-- USER DETAILS -->
+          <div class="form-section glass-card">
+            <h2 class="section-title">
+              <i class="fa-solid fa-user"></i> Delivery Details
+            </h2>
+
+            <div class="form-group">
+              <label for="fullName">Full Name <span class="required">*</span></label>
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                placeholder="Enter your full name"
+                required
+              />
+              <span class="error-message" id="nameError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email <span class="required">*</span></label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+              />
+              <span class="error-message" id="emailError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number <span class="required">*</span></label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="Enter your 10-digit phone number"
+                maxlength="10"
+                required
+              />
+              <span class="error-message" id="phoneError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="address">Delivery Address <span class="required">*</span></label>
+              <textarea
+                id="address"
+                name="address"
+                placeholder="Enter your complete delivery address"
+                rows="4"
+                required
+              ></textarea>
+              <span class="error-message" id="addressError"></span>
+            </div>
+          </div>
+
+          <!-- PAYMENT METHOD -->
+          <div class="form-section glass-card">
+            <h2 class="section-title">
+              <i class="fa-solid fa-credit-card"></i> Payment Method
+            </h2>
+
+            <div class="payment-options">
+              <label class="payment-option">
+                <input type="radio" name="paymentMethod" value="cod" checked />
+                <span class="payment-icon">
+                  <i class="fa-solid fa-wallet"></i>
+                </span>
+                <span class="payment-text">
+                  <strong>Cash on Delivery</strong>
+                  <small>Pay when your food arrives</small>
+                </span>
+              </label>
+
+              <label class="payment-option">
+                <input type="radio" name="paymentMethod" value="upi" />
+                <span class="payment-icon">
+                  <i class="fa-solid fa-mobile"></i>
+                </span>
+                <span class="payment-text">
+                  <strong>UPI Payment</strong>
+                  <small>Fast & secure digital payment</small>
+                </span>
+              </label>
+
+              <label class="payment-option">
+                <input type="radio" name="paymentMethod" value="card" />
+                <span class="payment-icon">
+                  <i class="fa-solid fa-credit-card"></i>
+                </span>
+                <span class="payment-text">
+                  <strong>Debit/Credit Card</strong>
+                  <small>Visa, MasterCard, etc.</small>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <!-- SPECIAL INSTRUCTIONS -->
+          <div class="form-section glass-card">
+            <h2 class="section-title">
+              <i class="fa-solid fa-clipboard"></i> Special Instructions (Optional)
+            </h2>
+            <textarea
+              id="instructions"
+              name="instructions"
+              placeholder="Any special requests? E.g., extra spice, no onion, etc."
+              rows="3"
+            ></textarea>
+          </div>
+
+          <!-- PLACE ORDER BUTTON -->
+          <button type="submit" class="place-order-btn">
+            <i class="fa-solid fa-check-circle"></i> Place Order
+          </button>
+        </form>
+      </div>
+
+      <!-- ORDER SUMMARY -->
+      <aside class="order-summary glass-card">
+        <h2>Order Summary</h2>
+
+        <div class="order-items" id="orderItems">
+          <!-- Items will be populated by JavaScript -->
+        </div>
+
+        <div class="summary-divider"></div>
+
+        <div class="summary-breakdown">
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="summarySubtotal">₹0</span>
+          </div>
+          <div class="summary-row">
+            <span>Discount</span>
+            <span id="summaryDiscount" class="discount-text">-₹0</span>
+          </div>
+          <div class="summary-row">
+            <span>Delivery</span>
+            <span id="summaryDelivery">₹0</span>
+          </div>
+          <div class="summary-row">
+            <span>Tax (5%)</span>
+            <span id="summaryTax">₹0</span>
+          </div>
+          <div class="summary-total">
+            <span>Total</span>
+            <span id="summaryTotal" class="total-price">₹0</span>
+          </div>
+        </div>
+
+        <a href="cart.html" class="back-to-cart-btn">
+          <i class="fa-solid fa-arrow-left"></i> Back to Cart
+        </a>
+      </aside>
+    </div>
+  </section>
+
+  <!-- SUCCESS MODAL -->
+  <div id="successModal" class="success-modal">
+    <div class="success-content glass-card">
+      <div class="success-icon">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+      <h2>Order Placed Successfully! 🎉</h2>
+      <p id="successMessage">Your order has been confirmed</p>
+      <div class="order-details">
+        <p>Order ID: <strong id="orderId">#QB-2024001</strong></p>
+        <p>Estimated Delivery: <strong>30-40 minutes</strong></p>
+      </div>
+      <a href="menu.html" class="continue-btn">Continue Shopping</a>
+    </div>
+  </div>
+
+  <script src="./checkout.js"></script>
+</body>
+</html>

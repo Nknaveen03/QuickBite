@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuickBite | Your Cart</title>
+  <link rel="stylesheet" href="./cart.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+</head>
+<body>
+  <div class="bg-overlay"></div>
+  <div class="floating-shape shape1"></div>
+  <div class="floating-shape shape2"></div>
+  <div class="floating-shape shape3"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar glass-nav glow-border">
+    <div class="logo">Quick <span>Bite</span></div>
+
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="offer.html">Offers</a></li>
+      <li><a href="signin.html">Sign In</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <button class="cart-btn" id="cartBtn" type="button">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span>Cart</span>
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </nav>
+
+  <!-- CART SECTION -->
+  <section class="cart-section">
+    <div class="cart-container">
+      <!-- CART ITEMS -->
+      <div class="cart-items-wrapper">
+        <h1 class="page-title">Your Cart 🛒</h1>
+        
+        <div class="cart-items-list" id="cartItemsList">
+          <!-- Items will be populated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- CART SUMMARY -->
+      <aside class="cart-summary glass-card">
+        <h2>Order Summary</h2>
+
+        <!-- AVAILABLE OFFERS -->
+        <div class="offers-section">
+          <div class="offers-header">
+            <h3>Available Offers</h3>
+            <p>Tap a code to use it instantly.</p>
+          </div>
+          <div id="availableCoupons" class="offers-list">
+            <!-- Coupon offers will be populated by JavaScript -->
+          </div>
+        </div>
+
+        <!-- COUPON SECTION -->
+        <div class="coupon-section">
+          <label for="couponInput" class="coupon-label">Have a coupon code?</label>
+          <div class="coupon-input-wrap">
+            <input
+              type="text"
+              id="couponInput"
+              placeholder="Enter coupon code..."
+              maxlength="20"
+            />
+            <button id="applyCouponBtn" class="apply-coupon-btn" type="button">
+              Apply
+            </button>
+          </div>
+          <p id="couponMessage" class="coupon-message"></p>
+        </div>
+
+        <!-- PRICE BREAKDOWN -->
+        <div class="price-breakdown">
+          <div class="breakdown-row">
+            <span>Subtotal</span>
+            <span id="subtotal">₹0</span>
+          </div>
+          <div class="breakdown-row">
+            <span>Discount</span>
+            <span id="discount" class="discount-amount">-₹0</span>
+          </div>
+          <div class="breakdown-row">
+            <span>Delivery Charge</span>
+            <span id="delivery">₹0</span>
+          </div>
+          <div class="breakdown-row">
+            <span>Tax (5%)</span>
+            <span id="tax">₹0</span>
+          </div>
+        </div>
+
+        <!-- TOTAL -->
+        <div class="total-section">
+          <div class="total-row">
+            <span>Total Amount</span>
+            <span id="totalAmount" class="total-price">₹0</span>
+          </div>
+        </div>
+
+        <!-- BUTTONS -->
+        <div class="cart-actions">
+          <a href="menu.html" class="continue-shopping-btn">
+            <i class="fa-solid fa-arrow-left"></i> Continue Shopping
+          </a>
+          <a href="checkout.html" class="checkout-btn" id="checkoutBtn">
+            Proceed to Checkout →
+          </a>
+        </div>
+
+        <!-- EMPTY CART MESSAGE -->
+        <div id="emptyCartMessage" class="empty-cart-message" style="display: none;">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <p>Your cart is empty</p>
+          <a href="menu.html" class="back-to-menu-btn">Back to Menu</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <script src="./cart.js"></script>
+</body>
+</html>
