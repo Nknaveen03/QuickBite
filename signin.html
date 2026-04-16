@@ -4,28 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuickBits - Sign In</title>
-    <link rel="stylesheet" href="sign.css">
+    <link rel="stylesheet" href="../Css/sign.css">
 </head>
 <body>
-    <div class="glass-container">
-        <h1 class="title">QuickBits</h1>
-        <h2 class="subtitle">Sign In</h2>
-        <h5 class="sub">Welcome back!</h5>
-        <form id="signinForm" novalidate>
-            <div class="form-group">
-                <label for="email" class="label">Email <span class="text-red-500">*</span></label>
-                <input type="email" id="email" placeholder="Enter your email address" class="input" required>
-                <span id="emailError" class="error hidden">Please enter a valid email.</span>
+    <div class="page-wrapper">
+        <section class="hero-panel">
+            <div class="hero-copy">
+                <h1>Delicious food delivered fast</h1>
+                <p>Choose your favorite meals and get them delivered hot and fresh in minutes.</p>
             </div>
-            <div class="form-group">
-                <label for="password" class="label">Password <span class="text-red-500">*</span></label>
-                <input type="password" id="password" placeholder="Enter your password" class="input" required>
-                <span id="passwordError" class="error hidden">Password is required.</span>
+            <div class="hero-image">
+                <img src="Signin img/a1.jpg" alt="Delicious food" />
             </div>
-            <button type="submit" class="btn">Sign In</button>
-        </form>
-        <p class="mt-4 text-center">Don't have an account? <a href="signup.html" class="link">Sign Up</a></p>
+        </section>
+
+        <aside class="auth-panel">
+            <div class="auth-box">
+                <h1 class="title"><span>Quick</span><span>Bits</span></h1>
+                <h2 class="subtitle">Sign In</h2>
+                <p class="sub">Welcome back! Log in to track your order and enjoy fast delivery.</p>
+
+                <form id="signinForm" novalidate>
+                    <div class="form-group">
+                        <label for="email" class="label">Email <span class="text-red-500">*</span></label>
+                        <input type="email" id="email" placeholder="Enter your email address" class="input" required>
+                        <span id="emailError" class="error hidden">Please enter a valid email.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="label">Password <span class="text-red-500">*</span></label>
+                        <input type="password" id="password" placeholder="Enter your password" class="input" required>
+                        <span id="passwordError" class="error hidden">Password is required.</span>
+                    </div>
+                    <button type="submit" class="btn">Sign In</button>
+                </form>
+
+                <p class="mt-2 text-center"><a href="signup.html" class="link">Forgot Password?</a></p>
+                <div class="signup-summary">
+                    <h3>New to QuickBits?</h3>
+                    <p>Sign up now and start ordering from top restaurants in your area.</p>
+                    <a href="signup.html" class="btn secondary-btn">Create Account</a>
+                </div>
+            </div>
+        </aside>
     </div>
-    <script src="sign.js"></script>
+
+    <script src="../javascript/signin.js"></script>
 </body>
 </html>

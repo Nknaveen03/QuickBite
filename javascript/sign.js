@@ -26,7 +26,20 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
+
+    hideFormErrors();
 });
+
+function hideFormErrors() {
+    document.querySelectorAll('.error').forEach(function(errorElement) {
+        errorElement.classList.add('hidden');
+    });
+
+    const passwordStrength = document.getElementById('passwordStrength');
+    if (passwordStrength) {
+        passwordStrength.innerHTML = '';
+    }
+}
 
 function validateSignIn(e) {
     e.preventDefault();
@@ -35,8 +48,9 @@ function validateSignIn(e) {
     const password = document.getElementById('password').value;
 
     if (!isValidEmail(email)) {
-        showError('emailError');
+       
         valid = false;
+         showError('emailError');
     } else {
         hideError('emailError');
     }
@@ -49,7 +63,7 @@ function validateSignIn(e) {
     }
 
     if (valid) {
-        window.location.href = 'home.html';
+        window.location.href = 'index.html';
     }
 
 }
@@ -111,6 +125,12 @@ function hideError(errorId) {
 function checkPasswordStrength(password) {
     const div = document.getElementById('passwordStrength');
     if (!div) return;
+
+    if (!password) {
+        div.innerHTML = '';
+        return;
+    }
+
     let strength = 0;
     let feedback = [];
 
