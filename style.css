@@ -112,7 +112,6 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 60px 100px 60px 40px;
-
     background: linear-gradient(90deg, #0F172A, #1E293B, #7C2D12);
     color: white;
 }
@@ -214,7 +213,6 @@ body {
 .card-item {
     text-align: center;
     flex-shrink: 0;
-    /* prevents shrinking */
 }
 
 .card-item:hover {
@@ -361,7 +359,7 @@ body {
 }
 
 
-/*restaurants*/
+/*restaurants container*/
 
 
 .food-section {
