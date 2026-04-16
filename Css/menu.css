@@ -9,22 +9,23 @@
 
 body {
   min-height: 100vh;
-  color: #fff7e6;
   overflow-x: hidden;
   position: relative;
-  background:
-    radial-gradient(circle at top left, rgba(255, 215, 120, 0.18), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(255, 194, 87, 0.18), transparent 25%),
-    linear-gradient(135deg, #1a1207, #2e1e0e, #4a3216, #7a5828);
+  background: linear-gradient(135deg, #0f172a, #020617);
+  color: white;
 }
 
 .bg-overlay {
   position: fixed;
   inset: 0;
+<<<<<<< HEAD:Css/menu.css
   background-color:rgb(16, 15, 15) ;
   
     /* linear-gradient(rgba(15, 10, 5, 0.35), rgba(15, 10, 5, 0.55)), */
     url("./image/bg-image") center/cover no-repeat;
+=======
+  background: linear-gradient(rgba(15, 10, 5, 0.35), rgba(15, 10, 5, 0.55));
+>>>>>>> bffe5bd (fixed html and css pages):menu.css
   z-index: -3;
   filter: saturate(0.9) brightness(0.55);
 }
@@ -78,7 +79,7 @@ body::before {
 
 @keyframes floatMove {
   0%, 100% {
-    transform: translateY(0px) translateX(0px);
+    transform: translateY(0) translateX(0);
   }
   50% {
     transform: translateY(-18px) translateX(10px);
@@ -87,9 +88,9 @@ body::before {
 
 .glass-card {
   background: rgba(255, 240, 214, 0.08);
-  border: 1px solid rgba(255, 227, 170, 0.2);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   border-radius: 28px;
   box-shadow:
     0 10px 35px rgba(0, 0, 0, 0.35),
@@ -110,24 +111,22 @@ body::before {
   padding: 2px;
   border-radius: inherit;
   background: linear-gradient(
-    90deg,
+    120deg,
     transparent 0%,
     transparent 20%,
-    rgba(255, 207, 112, 0.18) 35%,
+    rgba(14, 224, 224, 0.855) 35%,
     #ffcf70 48%,
     #fff2b3 50%,
-    #ffcf70 52%,
-    rgba(255, 207, 112, 0.18) 65%,
+    #10abf3df 52%,
+    rgb(5, 19, 102) 65%,
     transparent 80%,
     transparent 100%
   );
   background-size: 220% 100%;
-  animation: borderMove 5.5s linear infinite;
+  animation: borderMove 0.5s linear infinite;
   pointer-events: none;
   z-index: 1;
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
 }
@@ -146,25 +145,74 @@ body::before {
   }
 }
 
+@keyframes aquaBorderRun {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* NAVBAR */
 .navbar {
-  width: min(1200px, calc(100% - 40px));
-  margin: 10px auto 14px;
-  padding: 14px 24px;
-  border-radius: 28px;
+  position: sticky;
+  top: 20px;
+  z-index: 1000;
+  width: 90%;
+  margin: 20px auto 16px;
+  padding: 18px 28px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
-  top: 8px;
-  z-index: 1000;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #101826, #1b2a42);
+  border: 1px solid rgba(96, 165, 250, 0.22);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
 }
 
 .glass-nav {
+<<<<<<< HEAD:Css/menu.css
   background: rgba(12, 171, 68, 0.279);
   border: 1px solid rgba(255, 227, 170, 0.2);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+=======
+  background: linear-gradient(135deg, #101826, #1b2a42) !important;
+  border: 1px solid rgba(96, 165, 250, 0.22) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+}
+
+.navbar::before,
+.hero-section::before,
+.hero-content::before,
+.filter-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1.5px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #38bdf8, #67e8f9, #22d3ee, #38bdf8);
+  background-size: 250% 100%;
+  animation: aquaBorderRun 1s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.navbar > *,
+.hero-section > *,
+.hero-content > *,
+.filter-wrapper > * {
+  position: relative;
+  z-index: 2;
+>>>>>>> bffe5bd (fixed html and css pages):menu.css
 }
 
 .logo {
@@ -270,9 +318,9 @@ body::before {
   height: 46px;
   border: 1px solid rgba(255, 215, 120, 0.25);
   border-radius: 14px;
-  background: rgba(255, 240, 214, 0.08);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: #22324d;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   cursor: pointer;
   align-items: center;
   justify-content: center;
@@ -327,6 +375,25 @@ body::before {
   padding: 0 20px;
 }
 
+.hero-section,
+.hero-content {
+  background: linear-gradient(135deg, #162235, #223552) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid rgba(103, 232, 249, 0.22) !important;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.28) !important;
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+}
+
+.hero-section {
+  width: 90%;
+  margin: 0 auto 20px;
+  padding: 42px 30px;
+  text-align: center;
+}
+
 .hero-content {
   width: min(1200px, 100%);
   margin: 0 auto 16px;
@@ -370,16 +437,18 @@ body::before {
   gap: 12px;
   padding: 16px 18px;
   border-radius: 16px;
-  border: 1px solid rgba(255, 227, 170, 0.18);
-  background: rgba(255, 248, 235, 0.08);
+  border: 1px solid rgba(96, 165, 250, 0.18);
+  background: #2a3950 !important;
   color: #fff8eb;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
   transition: 0.3s ease;
 }
 
 .search-wrap:focus-within {
-  border-color: #ffcf70;
-  box-shadow: 0 0 0 4px rgba(255, 207, 112, 0.12);
-  background: rgba(255, 248, 235, 0.12);
+  border-color: #fbbf24;
+  box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.12);
+  background: #31445f !important;
 }
 
 .search-wrap i {
@@ -408,11 +477,19 @@ body::before {
   flex-wrap: wrap;
   justify-content: center;
   gap: 14px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #1c2940, #2a3954) !important;
+  border: 1px solid rgba(96, 165, 250, 0.14) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
+  position: relative;
+  overflow: hidden;
 }
 
 .filter-btn {
-  border: 1px solid rgba(255, 227, 170, 0.18);
-  background: rgba(255, 248, 235, 0.08);
+  border: 1px solid rgba(96, 165, 250, 0.16);
+  background: #32435c !important;
   color: #f7e6c4;
   padding: 12px 18px;
   border-radius: 16px;
@@ -425,9 +502,9 @@ body::before {
 .filter-btn:hover,
 .filter-btn.active {
   background: linear-gradient(135deg, #b67b1f, #ffcf70, #c08a2d);
-  color: #2f1d09;
+  color: rgb(0, 0, 0);
   transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(255, 200, 90, 0.25);
+  box-shadow: 0 10px 25px rgb(186, 214, 211);
 }
 
 .menu-grid {
@@ -461,18 +538,16 @@ body::before {
     90deg,
     transparent 0%,
     transparent 20%,
-    rgba(255, 207, 112, 0.18) 35%,
-    #ffcf70 48%,
-    #fff2b3 50%,
-    #ffcf70 52%,
+    rgba(14, 242, 250, 0.684) 35%,
+    #2bdac6 48%,
+    #15d6e8 50%,
+    #034eb1 52%,
     rgba(255, 207, 112, 0.18) 65%,
     transparent 80%,
     transparent 100%
   );
   background-size: 220% 100%;
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
 }
@@ -523,7 +598,7 @@ body::before {
 }
 
 .price {
-  color: #ffcf70;
+  color: #ff0404fe;
   font-weight: 700;
   white-space: nowrap;
 }
@@ -542,7 +617,7 @@ body::before {
   position: relative;
   border: none;
   border-radius: 18px;
-  background: linear-gradient(135deg, #b67b1f, #ffcf70, #c08a2d);
+  background: linear-gradient(135deg, #16d683, #16d683, #16d683);
   color: #2f1d09;
   font-size: 0.98rem;
   font-weight: 700;
@@ -849,10 +924,10 @@ body::before {
     align-items: stretch;
     justify-content: flex-start;
     gap: 14px;
-    background: rgba(28, 18, 8, 0.88);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    border-left: 1px solid rgba(255, 215, 120, 0.22);
+    background: #162133;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-left: 1px solid rgba(96, 165, 250, 0.18);
     box-shadow: -12px 0 28px rgba(0, 0, 0, 0.35);
     transition: right 0.35s ease;
     z-index: 1001;
@@ -876,8 +951,8 @@ body::before {
     border-radius: 14px;
     font-size: 1rem;
     color: #f7e6c4 !important;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 215, 120, 0.08);
+    background: #24344d;
+    border: 1px solid rgba(96, 165, 250, 0.12);
     text-align: left;
   }
 
