@@ -2,546 +2,474 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuickBits</title>
-    <link rel="stylesheet" href="./Css/style.css">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuickBits | Home</title>
+  <link rel="stylesheet" href="./Css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
 </head>
 
 <body>
-    <div class="navbar">
-        <h1>
-            <span class="n1">Quick</span><span class="n2">Bits</span>
-        </h1>
-        <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="🔍Search for Restaurants and food">
+  <div class="bg-overlay"></div>
+
+  <div class="floating-shape shape1"></div>
+  <div class="floating-shape shape2"></div>
+  <div class="floating-shape shape3"></div>
+
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar glass-nav glow-border">
+    <h1 class="logo">
+      <span>Quick</span><span>Bite</span>
+    </h1>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="offers.html">Offers</a></li>
+      <li><a href="signin.html">Sign In</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li>
+        <a href="cart.html" class="cart-btn">
+          Cart
+          <span class="cart-count">0</span>
+        </a>
+      </li>
+    </ul>
+
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="home-hero">
+    <div class="hero-left glass-card glow-border">
+      <p class="mini-title">PREMIUM TASTE • FAST DELIVERY</p>
+      <h1>Crave It. Click It. <span>QuickBite</span> Delivers.</h1>
+      <p class="hero-text">
+        Fresh burgers, crispy chicken, pasta, desserts and drinks from the best restaurants near you.
+        Fast delivery, hot meals, and premium taste in one place.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="menu.html" class="hero-btn primary-btn">Explore Menu</a>
+        <a href="offers.html" class="hero-btn secondary-btn">View Offers</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-box">
+          <h3>50+</h3>
+          <p>Restaurants</p>
         </div>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="menu.html">Menu</a>
-            <a href="offers.html">Offers</a>
-            <a href="contact.html">Contact</a>
-            <a href="cart.html">Cart</a>
-            <a href="signin.html">Sign In</a>
+        <div class="stat-box">
+          <h3>30 Min</h3>
+          <p>Fast Delivery</p>
         </div>
-        <div class="menu-toggle">☰</div>
+        <div class="stat-box">
+          <h3>5K+</h3>
+          <p>Happy Customers</p>
+        </div>
+      </div>
     </div>
 
-
-    <section class="hero-main">
-
-        <div class="hero-left">
-
-            <span class="hero-badge">🚀 Delivery in 30 minutes or FREE</span>
-
-            <h1>
-                Hungry?<br>
-                Order <span>Delicious</span><br>
-                Food Now.
-            </h1>
-
-            <p>
-                Discover the best restaurants near you. Fresh food,
-                fast delivery, amazing prices — all in one place.
-            </p>
-
-
-
-            <div class="hero-stats">
-                <div>
-                    <h3>50+</h3>
-                    <p>Restaurants</p>
-                </div>
-                <div>
-                    <h3>30 min</h3>
-                    <p>Avg Delivery</p>
-                </div>
-                <div>
-                    <h3>5k+</h3>
-                    <p>Happy Customers</p>
-                </div>
-            </div>
-
+    <div class="hero-right">
+      <div class="hero-image-card">
+        <div class="hero-image-border"></div>
+        <div class="hero-image-wrap">
+          <img src="https://tse4.mm.bing.net/th/id/OIP.PD7elSN8uZfiyXvUd8E3JwHaEK?pid=Api&h=220&P=0" alt="Delicious burger meal" />
         </div>
 
-        <div class="hero-right">
-            <img src="./images/hero image.png" alt="">
+        <div class="hero-float hero-float-one glass-card">
+          <h4>Fast Delivery</h4>
+          <p>Hot food at your doorstep</p>
         </div>
 
-    </section>
-
-
-    <div class="offer">
-        <div class="offer-content">
-            <h2>New User Offer-50% OFF on your first order!</h2>
-            <p>Valid on orders above ₹200. Limited time only.</p>
+        <div class="hero-float hero-float-two glass-card">
+          <h4>Live Tracking</h4>
+          <p>Track every order in real time</p>
         </div>
-        <div class="offer-code">
-            <span class="code"> USE: QUICK50</span>
-        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFER -->
+  <section class="offer glow-border glass-card">
+    <div class="offer-content">
+      <h2>New User Offer - 50% OFF on your first order!</h2>
+      <p>Valid on orders above ₹200. Limited time only.</p>
+    </div>
+    <div class="offer-code">
+      <span class="code">USE: QUICK50</span>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="mind">
+    <div class="section-title-wrap">
+      <h2>What's on your mind?</h2>
+      <p>Choose your favourite cravings and start exploring.</p>
     </div>
 
-    <div class="mind">
-        <h2>What's on your mind?</h2>
-        <div class="cards">
-            <a href="menu.html">
-                <div class="card-item">
-                    <img src="./images/all.jpg" alt="">
-                    <p>All</p>
-                </div>
-            </a>
-            <a href="menu.html">
-                <div class="card-item">
-                    <img src="./images/Burgers.jpg" alt="">
-                    <p>Burgers</p>
-                </div>
-            </a>
-
-            <a href="menu.html">
-                <div class="card-item">
-                    <img src="./images/Pizza.jpg" alt="">
-                    <p>Pizza</p>
-                </div>
-            </a>
-
-            <!-- <a href="menu.html">
-                <div class="card-item">
-                    <img src="./images/biriyani.jpg" alt="">
-                    <p>Biriyani</p>
-                </div>
-            </a> -->
-
-            <a href="menu.html">
-                <div class="card-item">
-                    <img src="./images/sushi.jpg" alt="">
-                    <p>Sushi</p>
-                </div>
-            </a>
-
-            <!-- <a href="menu.html">
-                <div class="card-item">
-                    <img src="./images/southindian.jpg" alt="">
-                    <p>South Indian</p>
-                </div>
-            </a> -->
-
-            <a href="menu.html">
-                <div class="card-item">
-                    <img src="./images/desserts.jpg" alt="">
-                    <p>Desserts</p>
-                </div>
-            </a>
-            <a href="menu.html">
-                <div class="card-item">
-                    <img src="./images/beverages.jpg" alt="">
-                    <p>Beverages</p>
-                </div>
-            </a>
-
+    <div class="cards">
+      <a href="menu.html">
+        <div class="card-item glass-card">
+            <div class="hover-border"></div>
+          <img src="./images/all.jpg" alt="All Foods" />
+          <p>All</p>
+          <span class="explore-mini">Explore</span>
         </div>
+      </a>
+
+      <a href="menu.html">
+        <div class="card-item glass-card">
+            <div class="hover-border"></div>
+          <img src="./images/Burgers.jpg" alt="Burgers" />
+          <p>Burgers</p>
+          <span class="explore-mini">Explore</span>
+        </div>
+      </a>
+
+      <a href="menu.html">
+        <div class="card-item glass-card">
+            <div class="hover-border"></div>
+          <img src="./images/sushi.jpg" alt="Sushi" />
+          <p>Sushi</p>
+          <span class="explore-mini">Explore</span>
+        </div>
+      </a>
+
+      <a href="menu.html">
+        <div class="card-item glass-card">
+            <div class="hover-border"></div>
+          <img src="./images/desserts.jpg" alt="Desserts" />
+          <p>Desserts</p>
+          <span class="explore-mini">Explore</span>
+        </div>
+      </a>
+
+      <a href="menu.html">
+        <div class="card-item glass-card">
+            <div class="hover-border"></div>
+          <img src="./images/beverages.jpg" alt="Beverages" />
+          <p>Beverages</p>
+          <span class="explore-mini">Explore</span>
+        </div>
+      </a>
     </div>
-    <!--featured restaurants-->
+  </section>
 
-    <section class="restaurants">
-        <div class="restaurants-header">
-            <h2>🔥 Featured Restaurants</h2>
-            <a href="menu.html">See all →</a>
-        </div>
-
-        <div class="restaurant-cards">
-
-            <!-- card 1 -->
-            <a href="menu.html">
-                <div class="restaurant-card">
-                    <div class="card-img">
-                        <img src="./images/Burgers.jpg" alt="">
-                        <span class="badge">PROMOTED</span>
-                        <span class="restaurant-offer">20% OFF up to ₹80</span>
-                    </div>
-
-                    <div class="card-content">
-                        <h3>Burger King</h3>
-                        <p>Burgers, Fast Food, Beverages</p>
-
-                        <div class="card-footer">
-                            <span class="rating">★ 4.2</span>
-                            <span>25-30 min</span>
-                            <span>₹200 for two</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <!--card 2-->
-
-            <a href="menu.html">
-                <div class="restaurant-card">
-                    <div class="card-img">
-                        <img src="./images/pizzahut.jpg" alt="">
-                        <span class="badge">PROMOTED</span>
-                        <span class="restaurant-offer">FLAT 30% OFF</span>
-                    </div>
-
-                    <div class="card-content">
-                        <h3>Pizza Hut</h3>
-                        <p>Pizza, Pasta, Desserts</p>
-
-                        <div class="card-footer">
-                            <span class="rating">★ 4.1</span>
-                            <span>30-40 min</span>
-                            <span>₹350 for two</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <!--card 3-->
-
-            <a href="menu.html">
-                <div class="restaurant-card">
-                    <div class="card-img">
-                        <img src="./images/biriyani.jpg" alt="">
-                        <span class="badge">PROMOTED</span>
-                        <span class="restaurant-offer">20% OFF</span>
-                    </div>
-
-                    <div class="card-content">
-                        <h3>Biriyani Point</h3>
-                        <p>Biriyani, Kebab, Fast Food.</p>
-
-                        <div class="card-footer">
-                            <span class="rating">★ 4.8</span>
-                            <span>15-20 min</span>
-                            <span>₹360 for two</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <!--card 4-->
-            <a href="menu.html">
-                <div class="restaurant-card">
-                    <div class="card-img">
-                        <img src="./images/sushi.jpg" alt="">
-                        <span class="badge">PROMOTED</span>
-                        <span class="restaurant-offer">10% OFF </span>
-                    </div>
-
-                    <div class="card-content">
-                        <h3>Sushi Place</h3>
-                        <p>Sushi, Japanese, Fast Food.</p>
-
-                        <div class="card-footer">
-                            <span class="rating">★ 4.2</span>
-                            <span>45-60 min</span>
-                            <span>₹600 for two</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-              <a href="menu.html">
-                <div class="restaurant-card">
-                    <div class="card-img">
-                        <img src="./images/Burgers.jpg" alt="">
-                        <span class="badge">PROMOTED</span>
-                        <span class="restaurant-offer">20% OFF up to ₹80</span>
-                    </div>
-
-                    <div class="card-content">
-                        <h3>Burger King</h3>
-                        <p>Burgers, Fast Food, Beverages</p>
-
-                        <div class="card-footer">
-                            <span class="rating">★ 4.2</span>
-                            <span>25-30 min</span>
-                            <span>₹200 for two</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-        </div>
-    </section>
-    <!--restaurants-->
-    <section class="food-section">
-        <div class="header">
-            <h2>Restaurants</h2>
-            <a href="menu.html">Filter & Sort →</a>
-        </div>
-        <div class="food-grid">
-
-            <!-- <a href="menu.html">
-                <div class="food-card">
-                    <img src="./images/r1.jpg" alt="">
-                    <div class="food-info">
-                        <h3>BOX8 - Desi Meals</h3>
-                        <p>India's Largest Desi Meals Brand</p>
-                        <span class="food-meta">₹0 Delivery, ₹0 Packaging , ₹0 Platform Fees</span>
-                    </div>
-                </div>
-            </a> -->
-            <!--card 2-->
-            <a href="menu.html">
-                <div class="food-card">
-                <img src="./images/r2.jpg" alt="">
-                <div class="food-info">
-                    <h3>LeanCrust Pizza</h3>
-                    <p>The Thin Crust Experts</p>
-                    <span class="food-meta">₹0 Delivery, ₹0 Packaging , ₹0 Platform Fees</span>
-                </div>
-            </div>
-            </a>
-
-            <!--card 3-->
-<!-- 
-           <a href="menu.html">
-             <div class="food-card">
-                <img src="./images/r3.jpg" alt="">
-                <div class="food-info">
-                    <h3>ZAZA Mughal Biriyani</h3>
-                    <p>India's Most Loved Biriyani</p>
-                    <span class="food-meta">₹0 Delivery, ₹0 Packaging , ₹0 Platform Fees</span>
-                </div>
-            </div>
-           </a> -->
-
-            <!--card 4-->
-<!-- 
-           <a href="menu.html">
-             <div class="food-card">
-                <img src="./images/r4.jpg" alt="">
-                <div class="food-info">
-                    <h3>WeFit - Protein Meals</h3>
-                    <p>Upto 65 gm Protein in Bowls,Salads & Sandwiches</p>
-                    <span class="food-meta">₹0 Delivery, ₹0 Packaging , ₹0 Platform Fees</span>
-                </div>
-            </div>
-           </a> -->
-
-            <!--card 5-->
-
-            <a href="menu.html">
-                <div class="food-card">
-                <img src="./images/r5.jpg" alt="">
-                <div class="food-info">
-                    <h3>MOZO Pizza- 2 Toppings</h3>
-                    <p>India's Most Loved Pizza</p>
-                    <span class="food-meta">₹0 Delivery, ₹0 Packaging , ₹0 Platform Fees</span>
-                </div>
-            </div>
-
-            </a>
-            <!--card 6-->
-<!-- 
-            <a href="menu.html">
-                <div class="food-card">
-                <img src="./images/r6.jpg" alt="">
-                <div class="food-info">
-                    <h3>NH1 Bowls</h3>
-                    <p>Highway to North!</p>
-                    <span class="food-meta">₹0 Delivery, ₹0 Packaging , ₹0 Platform Fees</span>
-                </div>
-            </div>
-            </a> -->
-
-            <!--card 7-->
-
-            <!-- <a href="menu.html">
-                <div class="food-card">
-                <img src="./images/r7.jpg" alt="">
-                <div class="food-info">
-                    <h3>Daily Kitchen Homely Meals</h3>
-                    <p>Mom-Style! Homely Meals</p>
-                    <span class="food-meta">₹0 Delivery, ₹0 Packaging , ₹0 Platform Fees</span>
-                </div>
-            </div>
-            </a> -->
-
-            <!--card 8-->
-<!-- 
-            <a href="menu.html">
-                <div class="food-card">
-                <img src="./images/r8.jpg" alt="">
-                <div class="food-info">
-                    <h3>The Ghee Kitchen Meals</h3>
-                    <p>Made with 100% Pure Fresh Ghee</p>
-                    <span class="food-meta">₹0 Delivery, ₹0 Packaging , ₹0 Platform Fees</span>
-                </div>
-            </div>
-            </a> -->
-
-            <!--card 9-->
-
-           <a href="menu.html">
-             <div class="food-card">
-                <img src="./images/r9.jpg" alt="">
-                <div class="food-info">
-                    <h3>Mealful Rolls</h3>
-                    <p>Delicious Rolls</p>
-                    <span class="food-meta">₹0 Delivery, ₹0 Packaging , ₹0 Platform Fees</span>
-                </div>
-            </div>
-           </a>
-
-            <!--card 10-->
-
-            <a href="menu.html">
-                <div class="food-card">
-                <img src="./images/r10.jpg" alt="">
-                <div class="food-info">
-                    <h3>Boom Sandwich</h3>
-                    <p>Freshly Made sandwich</p>
-                    <span class="food-meta">₹0 Delivery, ₹0 Packaging , ₹0 Platform Fees</span>
-                </div>
-            </div>
-
-            </a>
-            <!--card 11-->
-
-            <a href="menu.html">
-                <div class="food-card">
-                <img src="./images/r11.jpg" alt="">
-                <div class="food-info">
-                    <h3>Hola Pasta</h3>
-                    <p>Freshly Made Pasta</p>
-                    <span class="food-meta">₹0 Delivery, ₹0 Packaging , ₹0 Platform Fees</span>
-                </div>
-            </div>
-            </a>
-
-            <!--card 12-->
-           <a href="menu.html">
-             <div class="food-card">
-                <img src="./images/r12.jpg" alt="">
-                <div class="food-info">
-                    <h3>Globo Ice Cream</h3>
-                    <p>Ice Creams of the World</p>
-                    <span class="food-meta">₹0 Delivery, ₹0 Packaging , ₹0 Platform Fees</span>
-                </div>
-            </div>
-
-           </a>
-        </div>
-    </section>
-
-    <!--choose-->
-    <div class="container">
-        <div class="choose">
-            <h5>WHY CHOOSE US</h5>
-            <h2>Why Quick Eats?</h2>
-            <div class="why-cards">
-                <div class="why-card1">
-                    <h1>⚡</h1>
-                    <h3>30-Min Delivery</h3>
-                    <p>Guaranteed delivery in 30 minutes or your order is free.</p>
-                </div>
-
-                <div class="why-card1">
-                    <h1>🌿</h1>
-                    <h3>Fresh Food</h3>
-                    <p>All our partner restaurants use fresh, quality ingredients daily.</p>
-                </div>
-
-                <div class="why-card1">
-                    <h1>💳</h1>
-                    <h3>Safe Payments</h3>
-                    <p>Multiple secure payment options including UPI, card, and COD.</p>
-                </div>
-
-                <div class="why-card1">
-                    <h1>🎧</h1>
-                    <h3>24/7 Support</h3>
-                    <p>Our dedicated support team is available round the clock to assist you.</p>
-                </div>
-
-                <div class="why-card1">
-                    <h1>📦</h1>
-                    <h3>Real-Time Order Tracking</h3>
-                    <p>Track your order in real-time from the moment it's placed until it reaches you.</p>
-                </div>
-
-                <div class="why-card1">
-                    <h1>🎉</h1>
-                    <h3>Exclusive Offers</h3>
-                    <p>Get access to exclusive deals and discounts only available to our loyal customers.</p>
-                </div>
-
-            </div>
-
-        </div>
-        <div class="footer">
-            <div class="footer-logo">
-                <h2><span>Quick</span><span>Bits</span></h2>
-                <p>Order your favourite food from <br>the best restaurants near you — <br>fast, fresh, and affordable.
-                </p>
-            </div>
-
-            <div class="footer-menus">
-                <div class="footer-menu">
-                    <h4>Quick Eats</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="menu.html">Restaurants</a></li>
-                        <li><a href="offers.html">My Orders</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-menu">
-                    <h4>Cuisines</h4>
-                    <ul>
-                        <li><a href="menu.html">Pizza🍕</a></li>
-                        <li><a href="menu.html">Burgers🍔</a></li>
-                        <li><a href="menu.html">Tacos🌮</a></li>
-                        <li><a href="menu.html">Sushi🍣</a></li>
-                        <!-- <li><a href="menu.html">Biriyani🍛</a></li> -->
-                    </ul>
-                </div>
-
-                <div class="footer-menu">
-                    <h4>Help</h4>
-                    <ul>
-                        <li><a href="contact.html">FAQ's</a></li>
-                        <li><a href="contact.html">Refund Policies</a></li>
-                        <li><a href="contact.html">Partner with us</a></li>
-                        <li><a href="contact.html">Career</a></li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="copyright">
-            <p class="copyright">© 2026 QuickBits.All rights reserved.</p>
-        </div>
+  <!-- FEATURED -->
+  <section class="restaurants">
+    <div class="restaurants-header">
+      <h2>Featured Restaurants</h2>
+      <a href="menu.html">See all →</a>
     </div>
 
+    <div class="restaurant-cards">
+      <a href="menu.html">
+        <div class="restaurant-card glass-card">
+          <div class="hover-border"></div>
+          <div class="card-img">
+            <img src="./images/Burgers.jpg" alt="Burger King" />
+            <span class="badge">PROMOTED</span>
+            <span class="restaurant-offer">20% OFF up to ₹80</span>
+          </div>
+          <div class="card-content">
+            <h3>Burger King</h3>
+            <p>Burgers, Fast Food, Beverages</p>
+            <div class="card-footer">
+              <span class="rating">★ 4.2</span>
+              <span>25-30 min</span>
+              <span>₹200 for two</span>
+            </div>
+            <button class="explore-btn">Explore</button>
+          </div>
+        </div>
+      </a>
 
+      <a href="menu.html">
+        <div class="restaurant-card glass-card">
+          <div class="hover-border"></div>
+          <div class="card-img">
+            <img src="./images/pizzahut.jpg" alt="Pizza Hut" />
+            <span class="badge">PROMOTED</span>
+            <span class="restaurant-offer">FLAT 30% OFF</span>
+          </div>
+          <div class="card-content">
+            <h3>Pizza Hut</h3>
+            <p>Pizza, Pasta, Desserts</p>
+            <div class="card-footer">
+              <span class="rating">★ 4.1</span>
+              <span>30-40 min</span>
+              <span>₹350 for two</span>
+            </div>
+            <button class="explore-btn">Explore</button>
+          </div>
+        </div>
+      </a>
 
-    <script>
-        var toggle = document.querySelector(".menu-toggle");
-        var nav = document.querySelector(".nav-links");
+      <a href="menu.html">
+        <div class="restaurant-card glass-card">
+          <div class="hover-border"></div>
+          <div class="card-img">
+            <img src="./images/biriyani.jpg" alt="Biriyani Point" />
+            <span class="badge">PROMOTED</span>
+            <span class="restaurant-offer">20% OFF</span>
+          </div>
+          <div class="card-content">
+            <h3>Biriyani Point</h3>
+            <p>Biriyani, Kebab, Fast Food</p>
+            <div class="card-footer">
+              <span class="rating">★ 4.8</span>
+              <span>15-20 min</span>
+              <span>₹360 for two</span>
+            </div>
+            <button class="explore-btn">Explore</button>
+          </div>
+        </div>
+      </a>
 
-        toggle.addEventListener("click", () => {
-            nav.classList.toggle("active");
-        });
+      <a href="menu.html">
+        <div class="restaurant-card glass-card">
+          <div class="hover-border"></div>
+          <div class="card-img">
+            <img src="./images/sushi.jpg" alt="Sushi Place" />
+            <span class="badge">PROMOTED</span>
+            <span class="restaurant-offer">10% OFF</span>
+          </div>
+          <div class="card-content">
+            <h3>Sushi Place</h3>
+            <p>Sushi, Japanese, Fast Food</p>
+            <div class="card-footer">
+              <span class="rating">★ 4.2</span>
+              <span>45-60 min</span>
+              <span>₹600 for two</span>
+            </div>
+            <button class="explore-btn">Explore</button>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
 
+  <!-- FOOD GRID -->
+  <section class="food-section">
+    <div class="header">
+      <h2>Top Picks</h2>
+      <a href="menu.html">Filter & Sort →</a>
+    </div>
 
-        var coupon = document.querySelector(".offer-code");
+    <div class="food-grid">
+      <a href="menu.html">
+        <div class="food-card glass-card">
+          <div class="hover-border"></div>
+          <img src="./images/r2.jpg" alt="LeanCrust Pizza" />
+          <div class="food-info">
+            <h3>LeanCrust Pizza</h3>
+            <p>The Thin Crust Experts</p>
+            <span class="food-meta">₹0 Delivery, ₹0 Packaging, ₹0 Platform Fees</span>
+            <button class="explore-btn">Explore</button>
+          </div>
+        </div>
+      </a>
 
-        coupon.addEventListener("click", () => {
-            alert("coupon code copied to clipboard: QUICK50");
-        });
+      <a href="menu.html">
+        <div class="food-card glass-card">
+          <div class="hover-border"></div>
+          <img src="./images/r5.jpg" alt="MOZO Pizza" />
+          <div class="food-info">
+            <h3>MOZO Pizza - 2 Toppings</h3>
+            <p>India's Most Loved Pizza</p>
+            <span class="food-meta">₹0 Delivery, ₹0 Packaging, ₹0 Platform Fees</span>
+            <button class="explore-btn">Explore</button>
+          </div>
+        </div>
+      </a>
 
+      <a href="menu.html">
+        <div class="food-card glass-card">
+          <div class="hover-border"></div>
+          <img src="./images/r9.jpg" alt="Mealful Rolls" />
+          <div class="food-info">
+            <h3>Mealful Rolls</h3>
+            <p>Delicious Rolls</p>
+            <span class="food-meta">₹0 Delivery, ₹0 Packaging, ₹0 Platform Fees</span>
+            <button class="explore-btn">Explore</button>
+          </div>
+        </div>
+      </a>
 
-    </script>
+      <a href="menu.html">
+        <div class="food-card glass-card">
+          <div class="hover-border"></div>
+          <img src="./images/r10.jpg" alt="Boom Sandwich" />
+          <div class="food-info">
+            <h3>Boom Sandwich</h3>
+            <p>Freshly Made Sandwich</p>
+            <span class="food-meta">₹0 Delivery, ₹0 Packaging, ₹0 Platform Fees</span>
+            <button class="explore-btn">Explore</button>
+          </div>
+        </div>
+      </a>
 
+      <a href="menu.html">
+        <div class="food-card glass-card">
+          <div class="hover-border"></div>
+          <img src="./images/r11.jpg" alt="Hola Pasta" />
+          <div class="food-info">
+            <h3>Hola Pasta</h3>
+            <p>Freshly Made Pasta</p>
+            <span class="food-meta">₹0 Delivery, ₹0 Packaging, ₹0 Platform Fees</span>
+            <button class="explore-btn">Explore</button>
+          </div>
+        </div>
+      </a>
+
+      <a href="menu.html">
+        <div class="food-card glass-card">
+          <div class="hover-border"></div>
+          <img src="./images/r12.jpg" alt="Globo Ice Cream" />
+          <div class="food-info">
+            <h3>Globo Ice Cream</h3>
+            <p>Ice Creams of the World</p>
+            <span class="food-meta">₹0 Delivery, ₹0 Packaging, ₹0 Platform Fees</span>
+            <button class="explore-btn">Explore</button>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="container">
+    <div class="choose">
+      <h5>WHY CHOOSE US</h5>
+      <h2>Why QuickBits?</h2>
+
+      <div class="why-cards">
+        <div class="why-card1 glass-card">
+          <div class="hover-border"></div>
+          <h1>⚡</h1>
+          <h3>30-Min Delivery</h3>
+          <p>Guaranteed delivery in 30 minutes or your order is free.</p>
+        </div>
+
+        <div class="why-card1 glass-card">
+          <div class="hover-border"></div>
+          <h1>🌿</h1>
+          <h3>Fresh Food</h3>
+          <p>All our partner restaurants use fresh, quality ingredients daily.</p>
+        </div>
+
+        <div class="why-card1 glass-card">
+          <div class="hover-border"></div>
+          <h1>💳</h1>
+          <h3>Safe Payments</h3>
+          <p>Multiple secure payment options including UPI, card, and COD.</p>
+        </div>
+
+        <div class="why-card1 glass-card">
+          <div class="hover-border"></div>
+          <h1>🎧</h1>
+          <h3>24/7 Support</h3>
+          <p>Our dedicated support team is available round the clock to assist you.</p>
+        </div>
+
+        <div class="why-card1 glass-card">
+          <div class="hover-border"></div>
+          <h1>📦</h1>
+          <h3>Real-Time Order Tracking</h3>
+          <p>Track your order in real time from the moment it is placed until it reaches you.</p>
+        </div>
+
+        <div class="why-card1 glass-card">
+          <div class="hover-border"></div>
+          <h1>🎉</h1>
+          <h3>Exclusive Offers</h3>
+          <p>Get access to exclusive deals and discounts only available to our loyal customers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer glass-card">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-box">
+          <h3><span>Quick</span>Bite</h3>
+          <p>
+            Order your favourite food from the best restaurants near you —
+            fast, fresh, and affordable.
+          </p>
+        </div>
+
+        <div class="footer-box">
+          <h4>QuickBits</h4>
+          <a href="index.html">Home |</a>
+          <a href="menu.html">Menu |</a>
+          <a href="offers.html">Offers |</a>
+          <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="footer-box">
+          <h4>Cuisines</h4>
+          <a href="menu.html">Pizza |</a>
+          <a href="menu.html">Burgers |</a>
+          <a href="menu.html">Sushi |</a>
+          <a href="menu.html">Desserts </a>
+        </div>
+
+        <div class="footer-box">
+          <h4>Help</h4>
+          <a href="contact.html">FAQ's |</a>
+          <a href="contact.html">Refund Policies |</a>
+          <a href="contact.html">Partner with us |</a>
+          <a href="contact.html">Career </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 QuickBite. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    var menuToggle = document.getElementById("menuToggle");
+    var navLinks = document.getElementById("navLinks");
+    var mobileOverlay = document.getElementById("mobileOverlay");
+
+    menuToggle.addEventListener("click", function () {
+      menuToggle.classList.toggle("active");
+      navLinks.classList.toggle("show");
+      mobileOverlay.classList.toggle("show");
+    });
+
+    mobileOverlay.addEventListener("click", function () {
+      menuToggle.classList.remove("active");
+      navLinks.classList.remove("show");
+      mobileOverlay.classList.remove("show");
+    });
+
+    var coupon = document.querySelector(".offer-code");
+
+    coupon.addEventListener("click", function () {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText("QUICK50");
+      }
+      alert("Coupon code copied to clipboard: QUICK50");
+    });
+  </script>
 </body>
 
 </html>

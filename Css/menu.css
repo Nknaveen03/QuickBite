@@ -22,8 +22,6 @@ body {
   background-color: rgb(16, 15, 15);
 
   /* linear-gradient(rgba(15, 10, 5, 0.35), rgba(15, 10, 5, 0.55)), */
-  url("./image/bg-image") center/cover no-repeat;
-
   background: linear-gradient(rgba(15, 10, 5, 0.35), rgba(15, 10, 5, 0.55));
   z-index: -3;
   filter: saturate(0.9) brightness(0.55);
@@ -127,6 +125,7 @@ body::before {
   pointer-events: none;
   z-index: 1;
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
 }
@@ -203,6 +202,7 @@ body::before {
   pointer-events: none;
   z-index: 1;
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
 }
@@ -557,6 +557,7 @@ body::before {
       transparent 100%);
   background-size: 220% 100%;
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
 }
