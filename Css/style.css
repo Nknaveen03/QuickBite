@@ -33,12 +33,30 @@ body {
 }
 
 .n1 {
-    color: #FC8019;
+    color: #f91616;
+    font-weight: 800;
+    font-style: italic;
+    text-shadow: 0 2px 4px rgba(249, 115, 22, 0.5);
+}
+.n2 {
+    color: #4ade80;
+    font-weight: 800;
+    /* font-size: 3rem; */
+    font-style: italic;
 }
 
 .search-bar {
-    flex: 1;
-    min-width: 0;
+    /* flex: 1;
+    min-width: 0; */
+    display: flex;
+    align-items: center;
+    background: #f3f3f3; 
+    padding: 10px 20px;
+    border-radius: 50px; 
+    width: 100%;
+    max-width: 500px; 
+    margin: 20px auto; 
+    box-shadow: 0 4px 6px rgba
 }
 
 .search-bar input {
@@ -176,8 +194,8 @@ body {
 
 .offer {
     flex-wrap: wrap;
-    background-color: #FC8019;
-    color: white;
+    background-color: #790707;
+    color: rgb(255, 255, 255);
     padding: 10px 50px 10px 20px;
     display: flex;
     justify-content: space-between;
@@ -185,7 +203,8 @@ body {
 }
 
 .code {
-    background-color: #FFA17A;
+    background-color: #ffd41d;
+    color: navy;
     padding: 5px 10px 5px 10px;
     border-radius: 10px;
 }
@@ -194,6 +213,7 @@ body {
 
 .mind {
     padding: 40px;
+    text-align: center;
 }
 
 /* SLIDER CONTAINER */
@@ -202,6 +222,9 @@ body {
     gap: 25px;
     overflow-x: auto;
     scroll-behavior: smooth;
+    /* justify-content: center;  */
+    padding: 10px 20px; 
+    align-items: center;
 }
 
 /* HIDE SCROLLBAR */
@@ -250,7 +273,7 @@ body {
 
 .restaurants {
     padding: 40px;
-    background: #f5f5f5;
+    background: #f5f5f5;;
 }
 
 /* HEADER */
@@ -497,16 +520,18 @@ body {
     width: 400px;
 }
 
-.footer-logo span {
-    color: #FC8019;
+.footer-logo span:first-child {
+    color: #f91616;
+}
+
+.footer-logo span:last-child {
+    color: #4ade80;
 }
 
 .footer-menus {
     display: flex;
     gap: 100px;
     margin-right: 400px;
-
-
 }
 
 .footer-menu {

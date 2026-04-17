@@ -205,6 +205,7 @@ body {
     background: transparent;
     border: 1px solid rgba(245, 158, 11, 0.85); 
     color: #f8fafc;
+    text-decoration: none;
 }
 
 .secondary-btn:hover {

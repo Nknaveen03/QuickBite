@@ -244,8 +244,17 @@ body::before {
   z-index: 1002;
 }
 
-.logo span {
-  color: #ffcf70;
+.logo span:first-child {
+  color: #f91616;
+    font-weight: 800;
+    font-style: italic;
+    text-shadow: 0 2px 4px rgba(249, 115, 22, 0.5);
+}
+.logo span:last-child {
+    color: #4ade80;
+    font-weight: 800;
+    /* font-size: 1.8rem; */
+    font-style: italic;
 }
 
 .nav-links {
