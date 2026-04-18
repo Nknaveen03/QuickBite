@@ -45,9 +45,7 @@ body {
 .bg-overlay {
   position: fixed;
   inset: 0;
-  background:
-    linear-gradient(rgba(8, 12, 20, 0.55), rgba(8, 12, 20, 0.72)),
-    url("./image/bg-image") center/cover no-repeat;
+  background: linear-gradient(rgba(8, 12, 20, 0.55), rgba(8, 12, 20, 0.72));
   z-index: -3;
   filter: saturate(0.9) brightness(0.45);
 }
@@ -122,7 +120,7 @@ body::before {
 .glow-border {
   position: relative;
   border-radius: 28px;
-  overflow: hidden;
+  overflow: visible;
   isolation: isolate;
 }
 
@@ -169,7 +167,6 @@ body::before {
   }
 }
 
-/* NAVBAR */
 .navbar {
   width: min(1200px, calc(100% - 40px));
   margin: 10px auto 14px;
@@ -184,7 +181,7 @@ body::before {
   background: linear-gradient(135deg, #101826, #1b2a42) !important;
   border: 1px solid rgba(96, 165, 250, 0.22) !important;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
-  overflow: hidden;
+  overflow: visible;
 }
 
 .glass-nav {
@@ -207,7 +204,6 @@ body::before {
   pointer-events: none;
   z-index: 1;
   -webkit-mask:
-  /*...*/
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
@@ -278,6 +274,7 @@ body::before {
   flex-direction: column;
   gap: 5px;
   z-index: 1002;
+  padding: 0;
 }
 
 .menu-toggle span {
@@ -285,9 +282,22 @@ body::before {
   height: 2.5px;
   border-radius: 10px;
   background: linear-gradient(90deg, #38bdf8, #67e8f9, #22d3ee);
+  transition: 0.35s ease;
+  transform-origin: center;
 }
 
-/* CHECKOUT PAGE */
+.menu-toggle.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
 .checkout-section {
   width: 100%;
   padding: 20px;
@@ -408,7 +418,6 @@ body::before {
   background: rgba(255, 100, 100, 0.08);
 }
 
-/* PAYMENT OPTIONS */
 .payment-options {
   display: grid;
   grid-template-columns: 1fr;
@@ -417,7 +426,7 @@ body::before {
 
 .payment-option {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto auto 1fr;
   gap: 12px;
   padding: 14px;
   background: rgba(36, 54, 77, 0.72);
@@ -433,11 +442,6 @@ body::before {
   height: 20px;
   cursor: pointer;
   accent-color: var(--border-aqua);
-  grid-column: 1;
-}
-
-.payment-option input[type="radio"]:checked + .payment-icon + .payment-text {
-  color: var(--border-aqua);
 }
 
 .payment-option:has(input:checked) {
@@ -449,7 +453,6 @@ body::before {
 .payment-icon {
   font-size: 1.5rem;
   color: var(--border-aqua);
-  grid-column: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -460,7 +463,6 @@ body::before {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  grid-column: 2;
 }
 
 .payment-text strong {
@@ -473,7 +475,6 @@ body::before {
   color: #cbd5e1;
 }
 
-/* BUTTONS */
 .place-order-btn {
   padding: 14px 24px;
   background: linear-gradient(135deg, #06b6d4, #22d3ee, #67e8f9);
@@ -501,7 +502,6 @@ body::before {
   transform: translateY(0);
 }
 
-/* ORDER SUMMARY */
 .order-summary {
   padding: 24px;
   display: flex;
@@ -643,7 +643,6 @@ body::before {
   box-shadow: 0 4px 12px rgba(34, 211, 238, 0.16);
 }
 
-/* SUCCESS MODAL */
 .success-modal {
   position: fixed;
   inset: 0;
@@ -762,7 +761,6 @@ body::before {
   transform: translateY(-2px);
 }
 
-/* MOBILE */
 @media (max-width: 768px) {
   .checkout-container {
     grid-template-columns: 1fr;
@@ -786,6 +784,7 @@ body::before {
 
   .success-content {
     padding: 24px;
+    width: calc(100% - 24px);
   }
 
   .success-icon {
@@ -802,23 +801,36 @@ body::before {
 
   .nav-links {
     position: absolute;
-    top: 70px;
+    top: calc(100% + 12px);
     left: 0;
     right: 0;
     flex-direction: column;
     gap: 0;
     background: #162133;
-    border-radius: 0 0 28px 28px;
-    padding: 20px;
-    transform: translateY(-120%);
+    border-radius: 18px;
+    padding: 12px 0;
+    transform: translateY(-10px);
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
     transition: all 0.35s ease;
+    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.35);
   }
 
   .nav-links.show {
     transform: translateY(0);
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links a {
+    width: 100%;
+    display: block;
+    padding: 14px 20px;
   }
 }

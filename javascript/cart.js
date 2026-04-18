@@ -1,11 +1,10 @@
-// Coupon codes database
 const COUPONS = {
-  'SAVE50': { type: 'fixed', value: 50, description: 'Fixed ₹50 discount' },
-  'SAVE100': { type: 'fixed', value: 100, description: 'Fixed ₹100 discount' },
-  'FOOD10': { type: 'percentage', value: 10, description: '10% off on food' },
-  'FOOD20': { type: 'percentage', value: 20, description: '20% off on food' },
-  'WELCOME': { type: 'fixed', value: 75, description: 'New user - ₹75 off' },
-  'QUICKBITE': { type: 'percentage', value: 15, description: '15% off - QuickBite special' }
+  SAVE50: { type: 'fixed', value: 50, description: 'Fixed ₹50 discount' },
+  SAVE100: { type: 'fixed', value: 100, description: 'Fixed ₹100 discount' },
+  FOOD10: { type: 'percentage', value: 10, description: '10% off on food' },
+  FOOD20: { type: 'percentage', value: 20, description: '20% off on food' },
+  WELCOME: { type: 'fixed', value: 75, description: 'New user - ₹75 off' },
+  QUICKBITE: { type: 'percentage', value: 15, description: '15% off - QuickBite special' }
 };
 
 const DELIVERY_CHARGE = 40;
@@ -15,35 +14,54 @@ const COUPON_ORDER = ['SAVE50', 'SAVE100', 'FOOD10', 'FOOD20', 'WELCOME', 'QUICK
 let cart = [];
 let appliedCoupon = null;
 
-// Initialize cart from localStorage
 function initializeCart() {
   const savedCart = localStorage.getItem('quickbiteCart');
   if (savedCart) {
     cart = JSON.parse(savedCart);
   }
+
+  normalizeCartItems();
   renderCart();
+  updateCartCount();
 }
 
-// Save cart to localStorage
+function normalizeCartItems() {
+  cart = cart.map(function (item) {
+    return {
+      ...item,
+      image: item.image || item.img || 'images/default-food.jpg',
+      quantity: item.quantity || 1
+    };
+  });
+
+  localStorage.setItem('quickbiteCart', JSON.stringify(cart));
+}
+
 function saveCart() {
   localStorage.setItem('quickbiteCart', JSON.stringify(cart));
   updateCartCount();
 }
 
-// Update cart count in navbar
 function updateCartCount() {
+  const totalItems = cart.reduce(function (sum, item) {
+    return sum + item.quantity;
+  }, 0);
+
   const cartCount = document.getElementById('cartCount');
-  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-  cartCount.textContent = totalItems;
+  const mobileCartCount = document.getElementById('mobileCartCount');
+
+  if (cartCount) {
+    cartCount.textContent = totalItems;
+  }
+
+  if (mobileCartCount) {
+    mobileCartCount.textContent = totalItems;
+  }
 }
 
-// Render visible coupon offers for customers
 function renderAvailableCoupons() {
   const offersContainer = document.getElementById('availableCoupons');
-
-  if (!offersContainer) {
-    return;
-  }
+  if (!offersContainer) return;
 
   offersContainer.innerHTML = COUPON_ORDER
     .filter(function (code) {
@@ -51,9 +69,8 @@ function renderAvailableCoupons() {
     })
     .map(function (code) {
       const coupon = COUPONS[code];
-      const offerLabel = coupon.type === 'fixed'
-        ? `₹${coupon.value} off`
-        : `${coupon.value}% off`;
+      const offerLabel =
+        coupon.type === 'fixed' ? `₹${coupon.value} off` : `${coupon.value}% off`;
 
       return `
         <div class="offer-card">
@@ -73,10 +90,7 @@ function renderAvailableCoupons() {
   offersContainer.querySelectorAll('.use-offer-btn').forEach(function (button) {
     button.addEventListener('click', function () {
       const couponInput = document.getElementById('couponInput');
-
-      if (!couponInput) {
-        return;
-      }
+      if (!couponInput) return;
 
       couponInput.value = button.dataset.coupon;
       applyCoupon();
@@ -85,11 +99,12 @@ function renderAvailableCoupons() {
   });
 }
 
-// Render cart items
 function renderCart() {
   const cartItemsList = document.getElementById('cartItemsList');
   const emptyCartMessage = document.getElementById('emptyCartMessage');
   const checkoutBtn = document.getElementById('checkoutBtn');
+
+  if (!cartItemsList || !emptyCartMessage || !checkoutBtn) return;
 
   if (cart.length === 0) {
     cartItemsList.style.display = 'none';
@@ -104,64 +119,65 @@ function renderCart() {
   checkoutBtn.classList.remove('is-disabled');
 
   cartItemsList.innerHTML = cart
-    .map((item, index) => `
-      <div class="cart-item">
-        <img src="${item.image}" alt="${item.name}" class="cart-item-image" />
-        <div class="cart-item-details">
-          <div class="cart-item-name">${item.name}</div>
-          <div class="cart-item-price">₹${item.price.toFixed(2)}</div>
-          <div class="quantity-control">
-            <button class="qty-btn" onclick="decreaseQuantity(${index})" aria-label="Decrease quantity">−</button>
-            <span class="quantity-display">${item.quantity}</span>
-            <button class="qty-btn" onclick="increaseQuantity(${index})" aria-label="Increase quantity">+</button>
+    .map(function (item, index) {
+      return `
+        <div class="cart-item">
+          <img src="${item.image}" alt="${item.name}" class="cart-item-image" />
+          <div class="cart-item-details">
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-price">₹${item.price.toFixed(2)}</div>
+            <div class="quantity-control">
+              <button class="qty-btn" onclick="decreaseQuantity(${index})" aria-label="Decrease quantity">−</button>
+              <span class="quantity-display">${item.quantity}</span>
+              <button class="qty-btn" onclick="increaseQuantity(${index})" aria-label="Increase quantity">+</button>
+            </div>
           </div>
+          <div class="item-total">₹${(item.price * item.quantity).toFixed(2)}</div>
+          <button class="remove-btn" onclick="removeItem(${index})" aria-label="Remove item">
+            <i class="fa-solid fa-trash"></i> Remove
+          </button>
         </div>
-        <div class="item-total">₹${(item.price * item.quantity).toFixed(2)}</div>
-        <button class="remove-btn" onclick="removeItem(${index})" aria-label="Remove item">
-          <i class="fa-solid fa-trash"></i> Remove
-        </button>
-      </div>
-    `)
+      `;
+    })
     .join('');
 
   updateTotals();
 }
 
-// Increase item quantity
 function increaseQuantity(index) {
-  if (cart[index]) {
-    cart[index].quantity += 1;
-    saveCart();
-    renderCart();
-  }
+  if (!cart[index]) return;
+  cart[index].quantity += 1;
+  saveCart();
+  renderCart();
 }
 
-// Decrease item quantity
 function decreaseQuantity(index) {
-  if (cart[index]) {
-    if (cart[index].quantity > 1) {
-      cart[index].quantity -= 1;
-    } else {
-      removeItem(index);
-      return;
-    }
-    saveCart();
-    renderCart();
+  if (!cart[index]) return;
+
+  if (cart[index].quantity > 1) {
+    cart[index].quantity -= 1;
+  } else {
+    removeItem(index);
+    return;
   }
+
+  saveCart();
+  renderCart();
 }
 
-// Remove item from cart
 function removeItem(index) {
   cart.splice(index, 1);
   saveCart();
   renderCart();
 }
 
-// Calculate totals
 function calculateTotals() {
-  const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const subtotal = cart.reduce(function (sum, item) {
+    return sum + item.price * item.quantity;
+  }, 0);
 
   let discount = 0;
+
   if (appliedCoupon) {
     const coupon = COUPONS[appliedCoupon];
     if (coupon) {
@@ -170,7 +186,7 @@ function calculateTotals() {
       } else if (coupon.type === 'percentage') {
         discount = (subtotal * coupon.value) / 100;
       }
-      // Cap discount at subtotal to prevent negative values
+
       discount = Math.min(discount, subtotal);
     }
   }
@@ -190,28 +206,35 @@ function calculateTotals() {
   };
 }
 
-// Update totals display
 function updateTotals() {
   const totals = calculateTotals();
 
-  document.getElementById('subtotal').textContent = `₹${totals.subtotal.toFixed(2)}`;
-  document.getElementById('discount').textContent = `-₹${totals.discount.toFixed(2)}`;
-  document.getElementById('delivery').textContent = `₹${totals.delivery.toFixed(2)}`;
-  document.getElementById('tax').textContent = `₹${totals.tax.toFixed(2)}`;
-  document.getElementById('totalAmount').textContent = `₹${totals.total.toFixed(2)}`;
+  const subtotal = document.getElementById('subtotal');
+  const discount = document.getElementById('discount');
+  const delivery = document.getElementById('delivery');
+  const tax = document.getElementById('tax');
+  const totalAmount = document.getElementById('totalAmount');
 
-  // Save totals to sessionStorage for checkout page
-  sessionStorage.setItem('orderSummary', JSON.stringify({
-    cart: cart,
-    totals: totals,
-    appliedCoupon: appliedCoupon
-  }));
+  if (subtotal) subtotal.textContent = `₹${totals.subtotal.toFixed(2)}`;
+  if (discount) discount.textContent = `-₹${totals.discount.toFixed(2)}`;
+  if (delivery) delivery.textContent = `₹${totals.delivery.toFixed(2)}`;
+  if (tax) tax.textContent = `₹${totals.tax.toFixed(2)}`;
+  if (totalAmount) totalAmount.textContent = `₹${totals.total.toFixed(2)}`;
+
+  sessionStorage.setItem(
+    'orderSummary',
+    JSON.stringify({
+      cart: cart,
+      totals: totals,
+      appliedCoupon: appliedCoupon
+    })
+  );
 }
 
-// Apply coupon code
 function applyCoupon() {
   const couponInput = document.getElementById('couponInput');
-  const couponMessage = document.getElementById('couponMessage');
+  if (!couponInput) return;
+
   const code = couponInput.value.trim().toUpperCase();
 
   if (!code) {
@@ -221,39 +244,65 @@ function applyCoupon() {
 
   if (COUPONS[code]) {
     appliedCoupon = code;
-    const coupon = COUPONS[code];
-    let message = `✓ Coupon applied! ${coupon.description}`;
-    showCouponMessage(message, 'success');
-    updateTotals();
+    showCouponMessage(`✓ Coupon applied! ${COUPONS[code].description}`, 'success');
   } else {
-    showCouponMessage('Invalid coupon code', 'error');
     appliedCoupon = null;
-    updateTotals();
+    showCouponMessage('Invalid coupon code', 'error');
   }
-}
 
-// Remove coupon
-function removeCoupon() {
-  appliedCoupon = null;
-  document.getElementById('couponInput').value = '';
-  document.getElementById('couponMessage').textContent = '';
   updateTotals();
 }
 
-// Show coupon message
+function removeCoupon() {
+  appliedCoupon = null;
+
+  const couponInput = document.getElementById('couponInput');
+  const couponMessage = document.getElementById('couponMessage');
+
+  if (couponInput) couponInput.value = '';
+  if (couponMessage) {
+    couponMessage.textContent = '';
+    couponMessage.className = 'coupon-message';
+  }
+
+  updateTotals();
+}
+
 function showCouponMessage(message, type) {
   const couponMessage = document.getElementById('couponMessage');
+  if (!couponMessage) return;
+
   couponMessage.textContent = message;
   couponMessage.className = `coupon-message ${type}`;
 
   if (type === 'error') {
-    setTimeout(() => {
+    setTimeout(function () {
       couponMessage.textContent = '';
+      couponMessage.className = 'coupon-message';
     }, 3000);
   }
 }
 
-// Event listeners
+function openMenu() {
+  const navLinks = document.getElementById('navLinks');
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+
+  if (navLinks) navLinks.classList.add('show');
+  if (menuToggle) menuToggle.classList.add('active');
+  if (mobileOverlay) mobileOverlay.classList.add('show');
+}
+
+function closeMenu() {
+  const navLinks = document.getElementById('navLinks');
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+
+  if (navLinks) navLinks.classList.remove('show');
+  if (menuToggle) menuToggle.classList.remove('active');
+  if (mobileOverlay) mobileOverlay.classList.remove('show');
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   initializeCart();
   renderAvailableCoupons();
@@ -263,27 +312,40 @@ document.addEventListener('DOMContentLoaded', function () {
     applyCouponBtn.addEventListener('click', applyCoupon);
   }
 
-  // Allow pressing Enter to apply coupon
   const couponInput = document.getElementById('couponInput');
   if (couponInput) {
     couponInput.addEventListener('keypress', function (e) {
       if (e.key === 'Enter') {
+        e.preventDefault();
         applyCoupon();
       }
     });
   }
 
-  // Mobile menu toggle
   const menuToggle = document.getElementById('menuToggle');
   const navLinks = document.getElementById('navLinks');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+
   if (menuToggle && navLinks) {
     menuToggle.addEventListener('click', function () {
-      navLinks.classList.toggle('show');
-      menuToggle.classList.toggle('active');
+      if (navLinks.classList.contains('show')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    navLinks.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        closeMenu();
+      });
     });
   }
 
-  // Cart button redirect
+  if (mobileOverlay) {
+    mobileOverlay.addEventListener('click', closeMenu);
+  }
+
   const cartBtn = document.getElementById('cartBtn');
   if (cartBtn) {
     cartBtn.addEventListener('click', function () {
@@ -292,7 +354,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
-// Export functions for inline calls
 window.increaseQuantity = increaseQuantity;
 window.decreaseQuantity = decreaseQuantity;
 window.removeItem = removeItem;

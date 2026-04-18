@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>QuickBite | Your Cart</title>
   <link rel="stylesheet" href="./Css/cart.css" />
-  <link rel="stylesheet" href="Css/cart.css" />
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -17,9 +16,8 @@
   <div class="floating-shape shape2"></div>
   <div class="floating-shape shape3"></div>
 
-  <!-- NAVBAR -->
   <nav class="navbar glass-nav glow-border">
-    <div class="logo">Quick <span>Bite</span></div>
+    <div class="logo">Quick <span>Bites</span></div>
 
     <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu">
       <span></span>
@@ -33,43 +31,41 @@
       <li><a href="offers.html">Offers</a></li>
       <li><a href="signin.html">Sign In</a></li>
       <li><a href="contact.html">Contact</a></li>
+      <li class="mobile-cart-link">
+        <a href="cart.html" class="active">
+          Cart
+          <span class="mobile-cart-count" id="mobileCartCount">0</span>
+        </a>
+      </li>
     </ul>
 
     <button class="cart-btn" id="cartBtn" type="button">
       <i class="fa-solid fa-cart-shopping"></i>
-      <span>Cart</span>
+      <span class="cart-btn-text">Cart</span>
       <span class="cart-count" id="cartCount">0</span>
     </button>
   </nav>
 
-  <!-- CART SECTION -->
   <section class="cart-section">
     <div class="cart-container">
-      <!-- CART ITEMS -->
       <div class="cart-items-wrapper">
         <h1 class="page-title">Your Cart 🛒</h1>
-        
+
         <div class="cart-items-list" id="cartItemsList">
-          <!-- Items will be populated by JavaScript -->
         </div>
       </div>
 
-      <!-- CART SUMMARY -->
       <aside class="cart-summary glass-card">
         <h2>Order Summary</h2>
 
-        <!-- AVAILABLE OFFERS -->
         <div class="offers-section">
           <div class="offers-header">
             <h3>Available Offers</h3>
             <p>Tap a code to use it instantly.</p>
           </div>
-          <div id="availableCoupons" class="offers-list">
-            <!-- Coupon offers will be populated by JavaScript -->
-          </div>
+          <div id="availableCoupons" class="offers-list"></div>
         </div>
 
-        <!-- COUPON SECTION -->
         <div class="coupon-section">
           <label for="couponInput" class="coupon-label">Have a coupon code?</label>
           <div class="coupon-input-wrap">
@@ -86,7 +82,6 @@
           <p id="couponMessage" class="coupon-message"></p>
         </div>
 
-        <!-- PRICE BREAKDOWN -->
         <div class="price-breakdown">
           <div class="breakdown-row">
             <span>Subtotal</span>
@@ -106,7 +101,6 @@
           </div>
         </div>
 
-        <!-- TOTAL -->
         <div class="total-section">
           <div class="total-row">
             <span>Total Amount</span>
@@ -114,7 +108,6 @@
           </div>
         </div>
 
-        <!-- BUTTONS -->
         <div class="cart-actions">
           <a href="menu.html" class="continue-shopping-btn">
             <i class="fa-solid fa-arrow-left"></i> Continue Shopping
@@ -124,7 +117,6 @@
           </a>
         </div>
 
-        <!-- EMPTY CART MESSAGE -->
         <div id="emptyCartMessage" class="empty-cart-message" style="display: none;">
           <i class="fa-solid fa-cart-shopping"></i>
           <p>Your cart is empty</p>
@@ -133,6 +125,8 @@
       </aside>
     </div>
   </section>
+
+  <div class="mobile-overlay" id="mobileOverlay"></div>
 
   <script src="./javascript/cart.js"></script>
 </body>

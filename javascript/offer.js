@@ -5,106 +5,140 @@ const cartBtn = document.getElementById('cartBtn');
 const cartCount = document.getElementById('cartCount');
 const offersGrid = document.getElementById('offersGrid');
 
-let cart = [];
-
-// Simple offers dishes
 const dishes = [
-  { name: 'Pepperoni Pizza', price: 239, img: 'images/Pizza.jpg', desc: '20% OFF - Limited time', originalPrice: 299 },
-  { name: 'Cheese Burger', price: 159, img: 'images/Burgers.jpg', desc: 'Buy 1 Get 1 Free Fries', originalPrice: 199 },
-  { name: 'Crispy Chicken', price: 199, img: 'images/biriyani.jpg', desc: 'Combo Deal Save 20%', originalPrice: 249 },
-  { name: 'White Pasta', price: 143, img: 'images/pizzahut.jpg', desc: 'Flat ₹50 OFF', originalPrice: 179 },
-  { name: 'Chocolate Cake', price: 120, img: 'images/desserts.jpg', desc: 'Buy 2 Get 1 Free', originalPrice: 150 },
-  { name: 'Oreo Shake', price: 112, img: 'images/beverages.jpg', desc: '₹30 OFF on drinks', originalPrice: 140 },
-  { name: 'Margherita Pizza', price: 215, img: 'images/Pizza.jpg', desc: '20% OFF Pizza', originalPrice: 269 },
-  { name: 'Chicken Burger', price: 175, img: 'images/Burgers.jpg', desc: 'Meal Combo ₹99', originalPrice: 219 }
+  { name: 'Pepperoni Pizza', price: 239, image: 'images/Pizza.jpg', desc: '20% OFF - Limited time', originalPrice: 299 },
+  { name: 'Cheese Burger', price: 159, image: 'images/Burgers.jpg', desc: 'Buy 1 Get 1 Free Fries', originalPrice: 199 },
+  { name: 'Crispy Chicken', price: 199, image: 'images/biriyani.jpg', desc: 'Combo Deal Save 20%', originalPrice: 249 },
+  { name: 'White Pasta', price: 143, image: 'images/pizzahut.jpg', desc: 'Flat ₹50 OFF', originalPrice: 179 },
+  { name: 'Chocolate Cake', price: 120, image: 'images/desserts.jpg', desc: 'Buy 2 Get 1 Free', originalPrice: 150 },
+  { name: 'Oreo Shake', price: 112, image: 'images/beverages.jpg', desc: '₹30 OFF on drinks', originalPrice: 140 },
+  { name: 'Margherita Pizza', price: 215, image: 'images/Pizza.jpg', desc: '20% OFF Pizza', originalPrice: 269 },
+  { name: 'Chicken Burger', price: 175, image: 'images/Burgers.jpg', desc: 'Meal Combo ₹99', originalPrice: 219 }
 ];
 
-// Load cart count
 function loadCartCount() {
-  const saved = localStorage.getItem('quickbiteCart');
-  const total = saved ? JSON.parse(saved).reduce((sum, item) => sum + (item.quantity || 1), 0) : 0;
-  cartCount.textContent = total;
+  const savedCart = JSON.parse(localStorage.getItem('quickbiteCart') || '[]');
+  const totalItems = savedCart.reduce(function (sum, item) {
+    return sum + (item.quantity || 1);
+  }, 0);
+
+  if (cartCount) {
+    cartCount.textContent = totalItems;
+  }
+}
+
+function openMenu() {
+  if (navLinks) {
+    navLinks.classList.add('show');
+  }
+  if (menuToggle) {
+    menuToggle.classList.add('active');
+  }
+  if (mobileOverlay) {
+    mobileOverlay.classList.add('show');
+  }
+}
+
+function closeMenu() {
+  if (navLinks) {
+    navLinks.classList.remove('show');
+  }
+  if (menuToggle) {
+    menuToggle.classList.remove('active');
+  }
+  if (mobileOverlay) {
+    mobileOverlay.classList.remove('show');
+  }
 }
 
 if (menuToggle && navLinks) {
-  menuToggle.addEventListener("click", function () {
-    navLinks.classList.toggle("show");
-    menuToggle.classList.toggle("active");
-
-    if (mobileOverlay) {
-      mobileOverlay.classList.toggle("show");
+  menuToggle.addEventListener('click', function () {
+    if (navLinks.classList.contains('show')) {
+      closeMenu();
+    } else {
+      openMenu();
     }
   });
 }
 
 if (mobileOverlay) {
-  mobileOverlay.addEventListener("click", function () {
-    navLinks.classList.remove("show");
-    menuToggle.classList.remove("active");
-    mobileOverlay.classList.remove("show");
+  mobileOverlay.addEventListener('click', closeMenu);
+}
+
+if (navLinks) {
+  navLinks.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', closeMenu);
   });
 }
-// Navbar mobile toggle
-// menuToggle?.addEventListener('click', () => {
-//   navLinks.classList.toggle('show');
-//   menuToggle.classList.toggle('active');
-//   mobileOverlay.classList.toggle('show');
-// });
-// menuToggle?.addEventListener('click', () => {
-//   if (navLinks.classList.contains('show')) {
-//     menuToggle.innerHTML = '<span></span><span></span><span></span>'; // hamburger
-//   } else {
-//     menuToggle.innerHTML = '<i class="fa-solid fa-times"></i>'; // X
-//   }
-// });
-// mobileOverlay?.addEventListener('click', () => {
-//   navLinks.classList.remove('show');
-//   menuToggle.classList.remove('active');
-//   mobileOverlay.classList.remove('show');
-// });
 
-// Cart btn to cart.html
-cartBtn?.addEventListener('click', () => location.href = 'cart.html');
+if (cartBtn) {
+  cartBtn.addEventListener('click', function () {
+    window.location.href = 'cart.html';
+  });
+}
 
-// Render all cards (static)
 function renderOffers() {
-  offersGrid.innerHTML = dishes.map(d => `
-    <div class="food-card">
-      <div class="card-inner">
-        <div class="offer-badge">${d.desc}</div>
+  if (!offersGrid) return;
+
+  offersGrid.innerHTML = dishes.map(function (dish, index) {
+    return `
+      <div class="food-card">
+        <div class="offer-badge">${dish.desc}</div>
         <div class="food-image-wrap">
-          <img src="${d.img}" alt="${d.name}">
+          <img src="${dish.image}" alt="${dish.name}">
         </div>
         <div class="food-content">
-          <h3>${d.name}</h3>
+          <h3>${dish.name}</h3>
           <div class="price-group">
-            <span class="price">₹${d.price}</span>
-            <span class="original-price">₹${d.originalPrice}</span>
+            <span class="price">₹${dish.price}</span>
+            <span class="original-price">₹${dish.originalPrice}</span>
           </div>
-          <p>${d.desc}</p>
+          <p>${dish.desc}</p>
           <div class="btn-group">
-          <button type="button" class="details-btn" onclick="window.location.href='menu.html'">Details</button>
-            <button class="add-cart-btn" onclick="addToCart('${d.name}', ${d.price}, '${d.img}')">Add to Cart</button>
+            <button type="button" class="details-btn" onclick="window.location.href='menu.html'">Details</button>
+            <button type="button" class="add-cart-btn" onclick="addToCart(${index}, this)">Add to Cart</button>
           </div>
         </div>
       </div>
-    </div>
-  `).join('');
+    `;
+  }).join('');
 }
 
-// Add to cart simple
-function addToCart(name, price, img) {
+function addToCart(index, button) {
+  const selectedDish = dishes[index];
   let cartData = JSON.parse(localStorage.getItem('quickbiteCart') || '[]');
-  const item = cartData.find(i => i.name === name);
-  if (item) item.quantity += 1;
-  else cartData.push({ name, price, img, quantity: 1 });
+
+  const existingItem = cartData.find(function (item) {
+    return item.name === selectedDish.name;
+  });
+
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    cartData.push({
+      name: selectedDish.name,
+      price: selectedDish.price,
+      image: selectedDish.image,
+      quantity: 1
+    });
+  }
+
   localStorage.setItem('quickbiteCart', JSON.stringify(cartData));
   loadCartCount();
-  event.target.textContent = 'Added! ✓';
-  setTimeout(() => event.target.textContent = 'Add to Cart', 1500);
+
+  if (button) {
+    const oldText = button.textContent;
+    button.textContent = 'Added! ✓';
+    button.disabled = true;
+
+    setTimeout(function () {
+      button.textContent = oldText;
+      button.disabled = false;
+    }, 1400);
+  }
 }
 
-// Init
 loadCartCount();
 renderOffers();
 
+window.addToCart = addToCart;

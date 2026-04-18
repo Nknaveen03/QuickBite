@@ -1,40 +1,36 @@
-// Checkout functionality
 let orderData = null;
 
-// Initialize checkout
 function initializeCheckout() {
   loadOrderSummary();
   setupFormValidation();
   setupEventListeners();
 }
 
-// Load order summary from cart page
 function loadOrderSummary() {
   const summary = sessionStorage.getItem('orderSummary');
 
   if (!summary) {
-    // No cart data, redirect to menu
     window.location.href = 'menu.html';
     return;
   }
 
   orderData = JSON.parse(summary);
 
-  // Populate order items
   const orderItems = document.getElementById('orderItems');
+  if (!orderItems) return;
+
   orderItems.innerHTML = orderData.cart
-    .map(
-      item => `
-      <div class="order-item-mini">
-        <div class="order-item-mini-name">${item.name}</div>
-        <div class="order-item-mini-qty">Qty: ${item.quantity}</div>
-        <div class="order-item-mini-price">₹${(item.price * item.quantity).toFixed(2)}</div>
-      </div>
-    `
-    )
+    .map(function (item) {
+      return `
+        <div class="order-item-mini">
+          <div class="order-item-mini-name">${item.name}</div>
+          <div class="order-item-mini-qty">Qty: ${item.quantity}</div>
+          <div class="order-item-mini-price">₹${(item.price * item.quantity).toFixed(2)}</div>
+        </div>
+      `;
+    })
     .join('');
 
-  // Populate summary
   const totals = orderData.totals;
   document.getElementById('summarySubtotal').textContent = `₹${totals.subtotal.toFixed(2)}`;
   document.getElementById('summaryDiscount').textContent = `-₹${totals.discount.toFixed(2)}`;
@@ -43,30 +39,26 @@ function loadOrderSummary() {
   document.getElementById('summaryTotal').textContent = `₹${totals.total.toFixed(2)}`;
 }
 
-// Setup form validation
 function setupFormValidation() {
   const form = document.getElementById('checkoutForm');
 
+  if (!form) return;
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-
-    // Clear all error messages
     clearAllErrors();
 
-    // Validate form
     if (validateForm()) {
       processOrder();
     }
   });
 
-  // Real-time validation
   document.getElementById('fullName').addEventListener('blur', validateName);
   document.getElementById('email').addEventListener('blur', validateEmail);
   document.getElementById('phone').addEventListener('blur', validatePhone);
   document.getElementById('address').addEventListener('blur', validateAddress);
 }
 
-// Validate full name
 function validateName() {
   const fullName = document.getElementById('fullName').value.trim();
   const nameError = document.getElementById('nameError');
@@ -81,7 +73,7 @@ function validateName() {
     return false;
   }
 
-  if (!/^[a-zA-Z\s]*$/.test(fullName)) {
+  if (!/^[a-zA-Z\s]+$/.test(fullName)) {
     setError('fullName', nameError, 'Name should only contain letters');
     return false;
   }
@@ -90,7 +82,6 @@ function validateName() {
   return true;
 }
 
-// Validate email
 function validateEmail() {
   const email = document.getElementById('email').value.trim();
   const emailError = document.getElementById('emailError');
@@ -110,7 +101,6 @@ function validateEmail() {
   return true;
 }
 
-// Validate phone
 function validatePhone() {
   const phone = document.getElementById('phone').value.trim();
   const phoneError = document.getElementById('phoneError');
@@ -129,7 +119,6 @@ function validatePhone() {
   return true;
 }
 
-// Validate address
 function validateAddress() {
   const address = document.getElementById('address').value.trim();
   const addressError = document.getElementById('addressError');
@@ -148,58 +137,54 @@ function validateAddress() {
   return true;
 }
 
-// Validate entire form
 function validateForm() {
-  return (
-    validateName() &&
-    validateEmail() &&
-    validatePhone() &&
-    validateAddress()
-  );
+  return validateName() && validateEmail() && validatePhone() && validateAddress();
 }
 
-// Set error
 function setError(fieldId, errorElement, message) {
   const input = document.getElementById(fieldId);
-  input.classList.add('error');
-  errorElement.textContent = message;
-  errorElement.classList.add('show');
+  if (input) input.classList.add('error');
+  if (errorElement) {
+    errorElement.textContent = message;
+    errorElement.classList.add('show');
+  }
 }
 
-// Clear error
 function clearError(fieldId, errorElement) {
   const input = document.getElementById(fieldId);
-  input.classList.remove('error');
-  errorElement.textContent = '';
-  errorElement.classList.remove('show');
+  if (input) input.classList.remove('error');
+  if (errorElement) {
+    errorElement.textContent = '';
+    errorElement.classList.remove('show');
+  }
 }
 
-// Clear all errors
 function clearAllErrors() {
-  document.querySelectorAll('.error-message').forEach(el => {
+  document.querySelectorAll('.error-message').forEach(function (el) {
     el.textContent = '';
     el.classList.remove('show');
   });
-  document.querySelectorAll('input, textarea').forEach(el => {
+
+  document.querySelectorAll('input, textarea').forEach(function (el) {
     el.classList.remove('error');
   });
 }
 
-// Process order
 function processOrder() {
+  const paymentMethodElement = document.querySelector('input[name="paymentMethod"]:checked');
+
   const formData = {
     fullName: document.getElementById('fullName').value.trim(),
     email: document.getElementById('email').value.trim(),
     phone: document.getElementById('phone').value.trim(),
     address: document.getElementById('address').value.trim(),
-    paymentMethod: document.querySelector('input[name="paymentMethod"]:checked').value,
+    paymentMethod: paymentMethodElement ? paymentMethodElement.value : 'cod',
     specialInstructions: document.getElementById('instructions').value.trim(),
     orderTime: new Date().toLocaleString(),
     orderTotal: orderData.totals.total
   };
 
-  // Save order to localStorage
-  const orders = JSON.parse(localStorage.getItem('quickbiteOrders')) || [];
+  const orders = JSON.parse(localStorage.getItem('quickbiteOrders') || '[]');
   const orderId = `#QB-${Date.now().toString().slice(-6)}`;
 
   orders.push({
@@ -210,21 +195,16 @@ function processOrder() {
   });
 
   localStorage.setItem('quickbiteOrders', JSON.stringify(orders));
-
-  // Clear cart and session storage
   localStorage.removeItem('quickbiteCart');
   sessionStorage.removeItem('orderSummary');
 
-  // Show success modal
   showSuccessModal(orderId, formData.paymentMethod);
 }
 
-// Show success modal
 function showSuccessModal(orderId, paymentMethod) {
   const successModal = document.getElementById('successModal');
   const orderIdElement = document.getElementById('orderId');
-
-  orderIdElement.textContent = orderId;
+  const successMessage = document.getElementById('successMessage');
 
   const paymentText = {
     cod: 'Pay on Delivery',
@@ -232,19 +212,24 @@ function showSuccessModal(orderId, paymentMethod) {
     card: 'Card Payment'
   };
 
-  document.getElementById('successMessage').textContent = `Order confirmed with ${paymentText[paymentMethod]} • Estimated delivery: 30-40 minutes`;
+  if (orderIdElement) {
+    orderIdElement.textContent = orderId;
+  }
 
-  successModal.classList.add('show');
+  if (successMessage) {
+    successMessage.textContent = `Order confirmed with ${paymentText[paymentMethod]} • Estimated delivery: 30-40 minutes`;
+  }
 
-  // Redirect after 3 seconds
-  setTimeout(() => {
+  if (successModal) {
+    successModal.classList.add('show');
+  }
+
+  setTimeout(function () {
     window.location.href = 'menu.html';
   }, 4000);
 }
 
-// Setup event listeners
 function setupEventListeners() {
-  // Mobile menu toggle
   const menuToggle = document.getElementById('menuToggle');
   const navLinks = document.getElementById('navLinks');
 
@@ -253,24 +238,29 @@ function setupEventListeners() {
       navLinks.classList.toggle('show');
       menuToggle.classList.toggle('active');
     });
+
+    navLinks.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navLinks.classList.remove('show');
+        menuToggle.classList.remove('active');
+      });
+    });
   }
 
-  // Payment method selection
   const paymentOptions = document.querySelectorAll('input[name="paymentMethod"]');
-  paymentOptions.forEach(option => {
+  paymentOptions.forEach(function (option) {
     option.addEventListener('change', function () {
       console.log('Payment method selected:', this.value);
     });
   });
 
-  // Close modal when clicking continue button
   const continueBtn = document.querySelector('.continue-btn');
   if (continueBtn) {
-    continueBtn.addEventListener('click', function () {
+    continueBtn.addEventListener('click', function (e) {
+      e.preventDefault();
       window.location.href = 'menu.html';
     });
   }
 }
 
-// Initialize on page load
 document.addEventListener('DOMContentLoaded', initializeCheckout);

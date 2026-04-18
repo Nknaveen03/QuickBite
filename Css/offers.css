@@ -9,10 +9,14 @@
 
 body {
   min-height: 100vh;
-  background: radial-gradient(circle at top left, rgba(234, 88, 12, 0.22), transparent 34%), linear-gradient(135deg, #0f172a 0%, #111827 55%, #020617 100%);
+  background:
+    radial-gradient(circle at top left, rgba(234, 88, 12, 0.22), transparent 34%),
+    linear-gradient(135deg, #0f172a 0%, #111827 55%, #020617 100%);
   color: white;
+  overflow-x: hidden;
 }
 
+/* NAVBAR */
 .navbar {
   position: sticky;
   top: 20px;
@@ -27,10 +31,38 @@ body {
   background: linear-gradient(135deg, #101826, #1b2a42);
   border: 1px solid rgba(96, 165, 250, 0.22);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-  overflow: hidden;
+  overflow: visible;
 }
 
+.navbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1.5px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #38bdf8, #67e8f9, #22d3ee, #38bdf8);
+  background-size: 250% 100%;
+  animation: aquaBorderRun 2s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
 
+@keyframes aquaBorderRun {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.navbar > * {
+  position: relative;
+  z-index: 2;
+}
 
 .logo {
   font-size: 1.8rem;
@@ -39,12 +71,12 @@ body {
 }
 
 .logo span:first-child {
-  color: #f91616;
+  color: #ff1d1d;
   font-style: italic;
 }
 
 .logo span:last-child {
-  color: #4ade80;
+  color: #35d86d;
   font-style: italic;
 }
 
@@ -52,13 +84,15 @@ body {
   display: flex;
   gap: 24px;
   list-style: none;
+  align-items: center;
 }
 
 .nav-links a {
   color: #f7e6c4;
   text-decoration: none;
   font-weight: 600;
-  transition: color 0.3s;
+  transition: color 0.3s ease;
+  position: relative;
 }
 
 .nav-links a:hover,
@@ -68,26 +102,31 @@ body {
 
 .menu-toggle {
   display: none;
-  width: 46px;
-  height: 46px;
-  border: 1px solid #475569;
-  border-radius: 14px;
-  background: #1e293b;
+  width: 58px;
+  height: 58px;
+  border: 1px solid rgba(255, 207, 112, 0.22);
+  border-radius: 18px;
+  background: #22324d;
   cursor: pointer;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
+  padding: 0;
+  transition: all 0.3s ease;
 }
 
 .menu-toggle span {
-  width: 20px;
-  height: 2px;
-  background: #ffcf70;
-  border-radius: 2px;
-  transition: 0.3s;
+  width: 24px;
+  height: 2.5px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #ffe7a3, #ffcf70, #c08a2d);
+  transition: 0.35s ease;
+  transform-origin: center;
 }
 
 .menu-toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translate(6px, 6px);
+  transform: translateY(7px) rotate(45deg);
 }
 
 .menu-toggle.active span:nth-child(2) {
@@ -95,31 +134,7 @@ body {
 }
 
 .menu-toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -5px);
-}
-
-.mobile-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(10, 8, 5, 0.35);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  opacity: 0;
-  visibility: hidden;
-  transition: 0.35s ease;
-  z-index: 998;
-}
-
-.mobile-overlay.show {
-  opacity: 1;
-  visibility: visible;
-}
-
-.menu-hero,
-.filters-section,
-.menu-section {
-  width: 100%;
-  padding: 0 20px;
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 .cart-btn {
@@ -158,10 +173,12 @@ body {
 .mobile-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(8, 11, 18, 0.48);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   opacity: 0;
   visibility: hidden;
-  transition: 0.3s;
+  transition: 0.35s ease;
   z-index: 998;
 }
 
@@ -170,10 +187,29 @@ body {
   visibility: visible;
 }
 
+/* OFFERS */
 .offers-section {
-  padding: 40px 20px;
+  padding: 30px 20px 50px;
+}
+
+.container {
   max-width: 1200px;
   margin: 0 auto;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(103, 232, 249, 0.14);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 28px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  padding: 28px;
+}
+
+.offers-title {
+  font-size: 2.1rem;
+  color: #fff4d6;
+  margin-bottom: 24px;
 }
 
 .menu-grid {
@@ -183,16 +219,18 @@ body {
 }
 
 .food-card {
-  position: relative; 
-  background: rgba(30, 41, 59, 0.8);
+  position: relative;
+  background: rgba(30, 41, 59, 0.82);
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(103, 232, 249, 0.1);
 }
 
 .food-card:hover {
   transform: translateY(-10px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
 }
 
 .offer-badge {
@@ -219,7 +257,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s;
+  transition: transform 0.4s ease;
 }
 
 .food-card:hover img {
@@ -228,20 +266,19 @@ body {
 
 .food-content {
   padding: 25px;
-  position: relative; 
-  z-index: 1;
 }
 
-.food-top {
-  display: flex;
-  justify-content: space-between;
+.food-content h3 {
+  color: white;
+  font-size: 1.3rem;
   margin-bottom: 10px;
 }
 
-.food-top h3 {
-  color: white;
-  font-size: 1.3rem;
-  margin: 0;
+.price-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
 .original-price {
@@ -275,7 +312,7 @@ body {
   border-radius: 12px;
   cursor: pointer;
   font-weight: 600;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 
 .details-btn {
@@ -284,7 +321,7 @@ body {
 }
 
 .details-btn:hover {
-  background: #6b7280;
+  background: #64748b;
 }
 
 .add-cart-btn {
@@ -298,6 +335,12 @@ body {
   box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
 }
 
+.add-cart-btn:disabled {
+  opacity: 0.8;
+  cursor: default;
+}
+
+/* FOOTER */
 .footer {
   background: #0f172a;
   padding: 50px 20px 20px;
@@ -324,6 +367,12 @@ body {
   color: #f59e0b;
 }
 
+.footer-box h4 {
+  color: #fff4d6;
+  margin-bottom: 12px;
+}
+
+.footer-box p,
 .footer-box a {
   color: #94a3b8;
   text-decoration: none;
@@ -342,42 +391,62 @@ body {
   border-top: 1px solid #334155;
 }
 
+/* MOBILE SIDEBAR SAME AS FIRST IMAGE */
 @media (max-width: 900px) {
   .menu-toggle {
     display: flex;
-    justify-content: center;
+    order: 3;
+  }
+
+  .cart-btn {
+    display: none;
   }
 
   .nav-links {
     position: fixed;
-    top: 0;
-    right: -300px;
-    width: 280px;
-    height: 100vh;
-    background: #111827;
+    top: 96px;
+    right: -100%;
+    width: 46%;
+    max-width: 320px;
+    height: calc(100vh - 110px);
+    background: linear-gradient(180deg, #07152b, #0b1d3a);
     flex-direction: column;
-    padding: 80px 20px;
-    transition: right 0.3s;
+    align-items: stretch;
+    gap: 18px;
+    padding: 16px 22px 24px;
+    transition: right 0.35s ease;
     z-index: 1001;
+    box-shadow: -12px 0 35px rgba(0, 0, 0, 0.35);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
   }
 
   .nav-links.show {
     right: 0;
   }
 
+  .nav-links li {
+    width: 100%;
+  }
+
   .nav-links a {
-    padding: 15px;
-    border-bottom: 1px solid #374151;
+    width: 100%;
+    display: block;
+    padding: 18px 18px;
+    border-radius: 20px;
+    background: rgba(77, 112, 171, 0.22);
+    border: 1px solid rgba(103, 232, 249, 0.10);
+    color: #f7e6c4 !important;
+    font-size: 1rem;
+    font-weight: 700;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
   }
 
-  .cart-btn span {
-    display: none;
-  }
-
-  .cart-btn {
-    min-width: 50px;
-    justify-content: center;
-    padding: 12px;
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: #ffcf70 !important;
+    background: rgba(255, 207, 112, 0.10);
+    border-color: rgba(255, 207, 112, 0.18);
   }
 
   .menu-grid {
@@ -389,14 +458,36 @@ body {
 @media (max-width: 480px) {
   .navbar {
     width: 95%;
-    padding: 15px;
-    flex-wrap: wrap;
+    padding: 15px 18px;
     gap: 10px;
+  }
+
+  .logo {
+    font-size: 1.55rem;
+  }
+
+  .nav-links {
+    top: 92px;
+    width: 48%;
+    padding: 14px 16px 20px;
+  }
+
+  .nav-links a {
+    padding: 16px 16px;
+    border-radius: 18px;
+    font-size: 0.95rem;
+  }
+
+  .container {
+    padding: 18px;
+  }
+
+  .offers-title {
+    font-size: 1.7rem;
   }
 
   .menu-grid {
     grid-template-columns: 1fr;
-    padding: 0 10px;
   }
 
   .btn-group {
