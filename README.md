@@ -1,4 +1,4 @@
-🍔 QuickBite – Food Ordering Web Application
+QuickBite – Food Ordering Web Application
 
 📌 Project Overview
 
@@ -7,18 +7,18 @@ QuickBite is a front-end food ordering web application that allows users to brow
 ---
 Features
 
-* 🏠 Home page with navigation
-* 🍽️ Menu page with food items
-* 🎁 Offers page with discounts
-* 🛒 Add to Cart functionality
-* 📦 Cart page with total price calculation
-* 💳 Checkout page (simulation)
-* 🔐 Sign In and Sign Up with validation
-* 📱 Fully responsive design
+*  Home page with navigation
+*  Menu page with food items
+*  Offers page with discounts
+*  Add to Cart functionality
+*  Cart page with total price calculation
+*  Checkout page (simulation)
+*  Sign In and Sign Up with validation
+*  Fully responsive design
 
 ---
 
-🛠️ Technologies Used
+ Technologies Used
 
 * HTML5 – Structure of the application
 * CSS3 – Styling and responsive design
@@ -26,7 +26,7 @@ Features
 
 ---
 
-📂 Project Structure
+ Project Structure
 
 ```
 QuickBite/
@@ -58,7 +58,7 @@ QuickBite/
 
 ---
 
-⚙️ How It Works
+ How It Works
 
 * Users can browse food items from the Menu page.
 * Clicking **Add to Cart** stores items in a JavaScript array.
@@ -69,7 +69,7 @@ QuickBite/
 
 ---
 
-🔐 Authentication (Frontend Only)
+ Authentication (Frontend Only)
 
 * Sign In and Sign Up pages validate user input
 * No backend/database integration
@@ -80,16 +80,16 @@ QuickBite/
   * MongoDB
 ---
 
-🚧 Future Improvements
+ Future Improvements
 
-* 🔗 Backend integration for real authentication
-* 💾 Database for storing user and order data
-* 💳 Payment gateway integration
-* 📦 Order tracking system
+*  Backend integration for real authentication
+*  Database for storing user and order data
+*  Payment gateway integration
+*  Order tracking system
 
 ---
 
-👨‍💻 My Contribution
+ My Contribution
 
 * Designed and developed **Sign In & Sign Up pages**
 * Implemented **form validation using JavaScript**
@@ -97,7 +97,7 @@ QuickBite/
 
 ---
 
-📌 How to Run
+ How to Run
 
 1. Download or clone the repository
 2. Open `index.html` in your browser
@@ -105,7 +105,7 @@ QuickBite/
 
 ---
 
-🙌 Acknowledgement
+ Acknowledgement
 
 This project was developed as part of an academic/project review to demonstrate front-end development skills.
 
